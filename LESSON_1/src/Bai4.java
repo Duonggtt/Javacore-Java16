@@ -4,6 +4,6 @@ public class Bai4 {
 
         double giatri = 20;
         double num = Math.sqrt(giatri);
-        System.out.println("Result = " + (double) Math.ceil(num * 1000) / 1000);
+        System.out.println("Result = " + Math.ceil(num * 1000) / 1000);
     }
 }
