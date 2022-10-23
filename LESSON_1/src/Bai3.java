@@ -7,14 +7,14 @@ public class Bai3 {
         int x3 = 4;
         int x4 = 5;
 
-        if(x1 > x2 && x1 > x3 && x1 > x4) {
-            System.out.println("So lon nhat trong bon so la: " + x1);
-        }else if(x2 > x1 && x2 > x3 && x2 > x4) {
-            System.out.println("So lon nhat trong bon so la: " + x2);
-        }else if(x3 > x1 && x3 > x2 && x3 > x4) {
-            System.out.println("So lon nhat trong bon so la: " + x3);
-        }else {
-            System.out.println("So lon nhat trong bon so la: " + x4);
-        }
+        int lan1 = Math.max(x1 , x2);
+        int lan2 = Math.max(x1 , x3);
+        int lan3 = Math.max(x1, x4);
+
+        int lan4 = Math.max(lan1, lan2);
+        int lan5 = Math.max(lan1, lan3);
+
+        int result = Math.max(lan4, lan5);
+        System.out.println(result);
     }
 }

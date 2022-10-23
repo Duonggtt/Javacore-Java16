@@ -8,15 +8,9 @@ public class Bai7 {
         double x, y;
         float delta = (b*b) - (4 * a * c);
 
-        if(delta > 0) {
             x = ((-b) + Math.sqrt(delta)) / (2 * a);
             y = ((-b) - Math.sqrt(delta)) / (2 * a);
             System.out.println("Nghiem phan biet cua phuong trinh ax2 + bx + c = 0 la: " + "x1 = " + x + ", " + "x2 = " + y);
-        }else if( delta == 0) {
-            x = y = (-b) / (2 * a);
-            System.out.println("Phuong trinh co nghiem kep : x1 = x2" + x );
-        }else {
-            System.out.println("Phuong trinh vo nghiem !");
-        }
+
     }
 }
