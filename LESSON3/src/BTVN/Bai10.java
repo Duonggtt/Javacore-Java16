@@ -13,8 +13,8 @@ public class Bai10 {
         System.out.println("Nhap h: ");
         int h = new Scanner(System.in).nextInt();
 
-        for(int i=1;i<=h;i++) {
-            for(int j=1;j<2*h;j++) {
+        for(int i =1;i<=h;i++) {
+            for(int j =1;j<2*h;i++) {
                 if(Math.abs(h-j) <= (i-1)) {
                     System.out.print(" * ");
                 }else {
