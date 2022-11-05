@@ -14,39 +14,49 @@ public class B20 {
             n = new Scanner(System.in).nextInt();
         }
         int[] a = new int[n + 1];
-        int x = new Scanner(System.in).nextInt();
         System.out.println("Nhap vao mang: ");
-        for(int i=0;i<n;i++) {
+        for(int i=0;i<n-1;i++) {
             a[i] = new Scanner(System.in).nextInt();
         }
         System.out.println("Mang sau khi sap xep la: ");
         SapXep(a,n);
-        Xuat(a,n);
+        Xuat(a);
+        System.out.println("\nNhap vao phan tu x can chen: ");
+        int x = new Scanner(System.in).nextInt();
         System.out.println("\nMang sau khi chen them phan tu x la: ");
-        Chen(a,x,n);
-        Xuat(a,n);
+        Chen(a,x);
     }
 
-    public static void Chen(int[] a,int x,int n) {
-        int index = -1;
-        for(int i=0;i<n;i++) {
-            if(a[i] > x) {
-                index = i;
-                break;
+    public static void Chen(int[] a,int x) {
+
+        if(a[0] > x) {
+            for(int i=a.length-1;i>0;i--) {
+                a[i] = a[i-1];
             }
+            a[0] = x;
+        }else if(a[a.length-2] < x) {
+            a[a.length-1] = x;
         }
-        if(index == -1 ) {
-            a[n] = x;
-        }else {
-            for (int i = n; i > index ; i--) {
+        else {
+            int index = 0;
+            for(int i =0;i<a.length-1;i++) {
+                if(a[i] > x) {
+                    index = i;
+                    break;
+                }
+            }
+            for(int i=a.length-1;i>index;i--) {
                 a[i] = a[i-1];
             }
             a[index] = x;
         }
+
+        Xuat(a);
+//
     }
 
-    public static void Xuat(int[] a,int n) {
-        for(int i =0;i<n;i++) {
+    public static void Xuat(int[] a) {
+        for(int i =0;i<a.length;i++) {
             System.out.print(a[i] + " ");
         }
     }
