@@ -24,8 +24,8 @@ public class MainRun {
         System.out.println("2. Xuất danh sách đầu sách.");
         System.out.println("3. Nhập thông tin bạn đọc mới.");
         System.out.println("4. Xuất danh sách bạn đọc.");
-        System.out.println("5. Sắp xếp quản lý mượn sách theo tên bạn đọc.");
-        System.out.println("6. Sắp xếp quản lý mượn sách theo số lượng sách được mượn giảm dần.");
+        System.out.println("5. Thực hiện cho bạn đọc mượn sách.");
+        System.out.println("6. Sắp xếp quản lý danh sách mượn sách.");
         System.out.println("7. Tìm kiếm và hiển thị danh sách mượn sách theo tên bạn đọc.");
         System.out.println("8. Thoát chương trình!");
     }
