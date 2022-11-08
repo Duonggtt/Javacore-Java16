@@ -42,7 +42,7 @@ public class Rectangle {
     }
 
     public double findPerimeter() {
-        return (width + height) / 2;
+        return (width + height) * 2;
     }
 
     public void Xuat() {
