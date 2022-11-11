@@ -45,8 +45,8 @@ import java.util.Scanner;
                     break;
                 case 7:
                     System.out.println("Danh sách phân công sau khi sắp xếp theo họ tên là :");
-                    sortBusManagementByName();
-                    showBusManagement();
+                    sortBusManagementByName(drivers);
+                    showSortByName(drivers);
                     break;
                 case 8:
                     System.out.println("Danh sách phân công sau khi sắp xếp theo số lượng tuyến đảm nhận trong ngày là :");
@@ -66,7 +66,7 @@ import java.util.Scanner;
             double totalDistance = 0;
             for (int i =0;i<busManagerments.length;i++) {
                 for(int j=0;j<routes.length;j++) {
-                    totalDistance += routes.length * routes[i].getDistance();
+                    totalDistance += routes.length * routes[j].getDistance();
                 }
             }
         }
@@ -84,15 +84,24 @@ import java.util.Scanner;
             }
         }
 
-        private static void sortBusManagementByName() {
-            for (int i =0;i<busManagerments.length;i++) {
-                for(int j =i+1;j<busManagerments.length;j++) {
-                    Bus_Managerment temp = busManagerments[i];
-                    if(busManagerments[i].getDriver().getName().compareTo(busManagerments[j].getDriver().getName()) > 0) {
-                        temp = busManagerments[i];
-                        busManagerments[i] = busManagerments[j];
-                        busManagerments[j] = temp;
+        private static void sortBusManagementByName(Driver[] drivers) {
+            for (int i =0;i<drivers.length;i++) {
+                for(int j =i+1;j<drivers.length;j++) {
+                    Driver temp = drivers[i];
+                    if(drivers[i].getName().compareTo(drivers[j].getName()) > 0) {
+                        temp = drivers[i];
+                        drivers[i] = drivers[j];
+                        drivers[j] = temp;
                     }
+                }
+            }
+        }
+
+        private static void showSortByName(Driver[] drivers) {
+            for(int i=0;i<drivers.length;i++) {
+                if(drivers[i]!=null) {
+                    System.out.println(drivers[i]);
+                    break;
                 }
             }
         }
@@ -157,6 +166,8 @@ import java.util.Scanner;
                     System.out.println("Nhập vào số lượt cần đi: ");
                     int turnNum = new Scanner(System.in).nextInt();
                     detail[count] = new Bus_ManagementDetail();
+                    detail[count].setRoute(route);
+                    detail[count].setStopPointQuantity(turnNum);
                     turnNumTotal += route.getStopPointNumber() * turnNum;
                     if(turnNumTotal >15 ) {
                         System.out.println("Tài xế này đã chạy quá số lượt quy định!!");
@@ -175,6 +186,7 @@ import java.util.Scanner;
             for(int i=0;i<busManagerments.length;i++) {
                     if(busManagerments[i] ==null) {
                         busManagerments[i] = bus_managerment;
+                        break;
                     }
             }
         }
@@ -196,6 +208,7 @@ import java.util.Scanner;
                 for(int j =0;j<routes.length;j++) {
                     if(routes[i] ==null) {
                         routes[i] = route;
+                        break;
                     }
                 }
             }
@@ -218,6 +231,7 @@ import java.util.Scanner;
                 for(int j =0;j<drivers.length;j++) {
                     if(drivers[i] ==null) {
                         drivers[i] = driver;
+                        break;
                     }
                 }
             }

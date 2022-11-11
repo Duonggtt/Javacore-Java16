@@ -52,4 +52,3 @@ public class Route implements InfoInput{
         this.stopPointNumber = new Scanner(System.in).nextInt();
     }
 }
-    
