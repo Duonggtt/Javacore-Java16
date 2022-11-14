@@ -51,52 +51,56 @@ public class TranscriptLogic {
                 }
                 System.out.println("Số lượng môn học bạn nhập vượt quá số lượng môn học đã có! Vui lòng nhập lại!");
             } while (true);
-            System.out.println("Nhập mã môn học của sinh viên thứ " + (i + 1) + " : ");
-            int subjectId;
-            TranscriptDetail[] detail = new TranscriptDetail[subjectNumber];
-            int count = 0;
-            double total = 0;
-            Subject subject = null;
-            do {
-                subjectId = new Scanner(System.in).nextInt();
-                for (int j = 0; j <= MainRun.subjects.length; j++) {
-                    if (MainRun.subjects[j] != null && MainRun.subjects[j].getSubjectId() == subjectId) {
-                        subject = MainRun.subjects[j];
+            for(int j = 0;j<studentNumber;j++) {
+                System.out.println("Nhập mã môn học của sinh viên thứ " + (i + 1) + " : ");
+                int subjectId;
+                TranscriptDetail[] detail = new TranscriptDetail[subjectNumber];
+                int count = 0;
+                double total = 0;
+                Subject subject = null;
+                do {
+                    subjectId = new Scanner(System.in).nextInt();
+                    for (int k = 0; k <= MainRun.subjects.length; k++) {
+                        if (MainRun.subjects[k] != null && MainRun.subjects[k].getSubjectId() == subjectId) {
+                            subject = MainRun.subjects[k];
+                            break;
+                        }
+                    }
+                    if (subject != null) {
                         break;
                     }
-                }
-                if (subject != null) {
-                    break;
-                }
-                System.out.println("Mã môn học không tồn tại! Vui lòng nhập lại!");
-            } while (true);
-            System.out.println("Nhập điểm của môn học đó: ");
-            int subjectPoint;
-            do {
-                subjectPoint = new Scanner(System.in).nextInt();
-                if (subjectPoint >= 0 && subjectPoint <= 10) {
-                    break;
-                }
-                System.out.println("điểm bạn nhập không hợp lệ !! Vui lòng nhập trong khoảng từ 0-10!");
-            } while (true);
-            detail[count] = new TranscriptDetail(subject, subjectPoint);
-            count++;
-            total += subjectPoint / subjectNumber;
-            for(int j = 0;j<detail.length-1;i++) {
-                for(int k=j+1;k<detail.length;k++) {
-                    TranscriptDetail detail1 = detail[i];
-                    TranscriptDetail detail2 = detail[i];
-                    if(detail1.getPoint() > detail2.getPoint()) {
-                        TranscriptDetail temp = detail1;
-                        detail1 = detail2;
-                        detail2 = temp;
+                    System.out.println("Mã môn học không tồn tại! Vui lòng nhập lại!");
+                } while (true);
+                System.out.println("Nhập điểm của môn học đó: ");
+                int subjectPoint;
+                do {
+                    subjectPoint = new Scanner(System.in).nextInt();
+                    if (subjectPoint >= 0 && subjectPoint <= 10) {
+                        break;
+                    }
+                    System.out.println("điểm bạn nhập không hợp lệ !! Vui lòng nhập trong khoảng từ 0-10!");
+                } while (true);
+                detail[count] = new TranscriptDetail(subject, subjectPoint);
+                count++;
+                total += subjectPoint / subjectNumber;
+                for(int k = 0;k<detail.length-1;k++) {
+                    for(int h=j+1;h<detail.length;h++) {
+                        if(detail[k] != null && detail[h] != null) {
+                            TranscriptDetail detail1 = detail[k];
+                            TranscriptDetail detail2 = detail[h];
+                            if(detail1.getPoint() > detail2.getPoint()) {
+                                TranscriptDetail temp = detail1;
+                                detail1 = detail2;
+                                detail2 = temp;
+                            }
+                        }
                     }
                 }
+                //luu gia tri
+                Transcript transcript = new Transcript(student, detail);
+                transcript.setTotalPoint(total);
+                saveTranscriptManagement(transcript);
             }
-            //luu gia tri
-            Transcript transcript = new Transcript(student, detail);
-            transcript.setTotalPoint(total);
-            saveTranscriptManagement(transcript);
         }
     }
 
@@ -172,10 +176,12 @@ public class TranscriptLogic {
             for(int j=i+1;j<MainRun.transcripts.length;j++) {
                 Transcript transcript1 = MainRun.transcripts[i];
                 Transcript transcript2 = MainRun.transcripts[j];
-                if(transcript1.getStudent().getName().compareTo(transcript1.getStudent().getName()) > 0) {
-                    Transcript temp = transcript1;
-                    transcript1 = transcript2;
-                    transcript2 = temp;
+                if(transcript1 != null & transcript2 != null) {
+                    if(transcript1.getStudent().getName().compareTo(transcript1.getStudent().getName()) > 0) {
+                        Transcript temp = transcript1;
+                        transcript1 = transcript2;
+                        transcript2 = temp;
+                    }
                 }
             }
         }
@@ -184,7 +190,10 @@ public class TranscriptLogic {
     public static void totalTranscript() {
         for(int i=0;i<MainRun.transcripts.length;i++) {
             Transcript transcript = new Transcript();
-            System.out.println("Điểm tổng kết của sinh viên tên " + MainRun.students[i].getName() + " la: " + transcript.totalPoint);
+            if(MainRun.transcripts[i] != null && MainRun.students[i] != null) {
+                System.out.println("Điểm tổng kết của sinh viên tên " + MainRun.students[i].getName() + " la: " + transcript.totalPoint);
+            }
+
         }
     }
 }
