@@ -176,8 +176,11 @@ public class TranscriptLogic {
            }
            TranscriptDetail[] details = transcript.getTranscriptDetails();
            for (int j=0;j<details.length - 1;j++) {
+               if(details[j] == null) {
+                   continue;
+               }
                 for(int k = j+1;k<details.length;k++) {
-                    if(details[k] == null && details[j] == null) {
+                    if(details[k] == null) {
                         continue;
                     }
                     if(details[j].getSubject().getSubjectName().compareTo(details[k].getSubject().getSubjectName()) > 0) {
@@ -192,15 +195,20 @@ public class TranscriptLogic {
 
     private static void sortByName() {
         for (int i = 0; i < MainRun.transcripts.length - 1; i++) {
-            for (int j = i + 1; j < MainRun.transcripts.length; j++) {
                 Transcript transcript1 = MainRun.transcripts[i];
+                if(transcript1 == null) {
+                    continue;
+                }
+            for (int j = i + 1; j < MainRun.transcripts.length; j++) {
+
                 Transcript transcript2 = MainRun.transcripts[j];
-                if (transcript1 != null & transcript2 != null) {
-                    if (transcript1.getStudent().getName().compareTo(transcript2.getStudent().getName()) > 0) {
+                if(transcript2 == null) {
+                    continue;
+                }
+                if (transcript1.getStudent().getName().compareTo(transcript2.getStudent().getName()) > 0) {
                         Transcript temp = transcript1;
                         transcript1 = transcript2;
                         transcript2 = temp;
-                    }
                 }
             }
         }
