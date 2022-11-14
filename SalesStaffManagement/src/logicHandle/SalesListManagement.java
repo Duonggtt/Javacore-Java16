@@ -51,11 +51,10 @@ public class SalesListManagement {
                 }
                 System.out.println("So luong mat hang da vuot qua du lieu hien co! Vui long nhap lai!");
             }while(true);
-            for(int j=0;j<staffNumber;j++) {
+            for(int j=0;j<itemNum;j++) {
                 System.out.println("Nhap ma mat hang: ");
                 Item item = null;
                 int count = 0;
-                int total = 0;
                 SalesListDetail[] detail = new SalesListDetail[itemNum];
                 int itemId;
                 do {
