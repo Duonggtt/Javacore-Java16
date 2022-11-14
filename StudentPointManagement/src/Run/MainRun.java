@@ -47,6 +47,7 @@ public class MainRun {
                 break;
             case 6:
                 TranscriptLogic.sortTranscript();
+                showTranscriptManagement();
                 break;
             case 7:
                 TranscriptLogic.totalTranscript();

@@ -1,6 +1,7 @@
 package LogicHandle;
 
 import Run.MainRun;
+import com.sun.tools.javac.Main;
 import entity.Student;
 import entity.Subject;
 import entity.Transcript;
@@ -52,7 +53,7 @@ public class TranscriptLogic {
                 System.out.println("Số lượng môn học bạn nhập vượt quá số lượng môn học đã có! Vui lòng nhập lại!");
             } while (true);
             for(int j = 0;j<studentNumber;j++) {
-                System.out.println("Nhập mã môn học thứ" + (j+1) + "của sinh viên: ");
+                System.out.println("Nhập mã môn học thứ " + (j+1) + " của sinh viên: ");
                 int subjectId;
                 TranscriptDetail[] detail = new TranscriptDetail[subjectNumber];
                 int count = 0;
@@ -72,7 +73,7 @@ public class TranscriptLogic {
                     System.out.println("Mã môn học không tồn tại! Vui lòng nhập lại!");
                 } while (true);
                 System.out.println("Nhập điểm của môn học đó: ");
-                int subjectPoint;
+                float subjectPoint;
                 do {
                     subjectPoint = new Scanner(System.in).nextInt();
                     if (subjectPoint >= 0 && subjectPoint <= 10) {
@@ -168,7 +169,25 @@ public class TranscriptLogic {
     }
 
     private static void sortBySubjectName() {
-        showTranscriptManagement();
+       for(int i = 0;i < MainRun.transcripts.length;i++) {
+           Transcript transcript = MainRun.transcripts[i];
+           if(transcript == null) {
+               continue;
+           }
+           TranscriptDetail[] details = transcript.getTranscriptDetails();
+           for (int j=0;j<details.length - 1;j++) {
+                for(int k = j+1;k<details.length;k++) {
+                    if(details[k] == null && details[j] == null) {
+                        continue;
+                    }
+                    if(details[j].getSubject().getSubjectName().compareTo(details[k].getSubject().getSubjectName()) > 0) {
+                        TranscriptDetail temp = details[j];
+                        details[j] = details[k];
+                        details[k] = temp;
+                    }
+                }
+           }
+       }
     }
 
     private static void sortByName() {
@@ -177,7 +196,7 @@ public class TranscriptLogic {
                 Transcript transcript1 = MainRun.transcripts[i];
                 Transcript transcript2 = MainRun.transcripts[j];
                 if (transcript1 != null & transcript2 != null) {
-                    if (transcript1.getStudent().getName().compareTo(transcript1.getStudent().getName()) > 0) {
+                    if (transcript1.getStudent().getName().compareTo(transcript2.getStudent().getName()) > 0) {
                         Transcript temp = transcript1;
                         transcript1 = transcript2;
                         transcript2 = temp;
