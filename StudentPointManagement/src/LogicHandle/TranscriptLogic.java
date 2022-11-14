@@ -52,7 +52,7 @@ public class TranscriptLogic {
                 System.out.println("Số lượng môn học bạn nhập vượt quá số lượng môn học đã có! Vui lòng nhập lại!");
             } while (true);
             for(int j = 0;j<studentNumber;j++) {
-                System.out.println("Nhập mã môn học của sinh viên thứ " + (i + 1) + " : ");
+                System.out.println("Nhập mã môn học thứ" + (j+1) + "của sinh viên: ");
                 int subjectId;
                 TranscriptDetail[] detail = new TranscriptDetail[subjectNumber];
                 int count = 0;
@@ -82,7 +82,7 @@ public class TranscriptLogic {
                 } while (true);
                 detail[count] = new TranscriptDetail(subject, subjectPoint);
                 count++;
-                total += subjectPoint / subjectNumber;
+                total += subjectPoint / (double)subjectNumber;
                 for(int k = 0;k<detail.length-1;k++) {
                     for(int h=j+1;h<detail.length;h++) {
                         if(detail[k] != null && detail[h] != null) {
@@ -172,12 +172,12 @@ public class TranscriptLogic {
     }
 
     private static void sortByName() {
-        for(int i=0;i<MainRun.transcripts.length-1;i++){
-            for(int j=i+1;j<MainRun.transcripts.length;j++) {
+        for (int i = 0; i < MainRun.transcripts.length - 1; i++) {
+            for (int j = i + 1; j < MainRun.transcripts.length; j++) {
                 Transcript transcript1 = MainRun.transcripts[i];
                 Transcript transcript2 = MainRun.transcripts[j];
-                if(transcript1 != null & transcript2 != null) {
-                    if(transcript1.getStudent().getName().compareTo(transcript1.getStudent().getName()) > 0) {
+                if (transcript1 != null & transcript2 != null) {
+                    if (transcript1.getStudent().getName().compareTo(transcript1.getStudent().getName()) > 0) {
                         Transcript temp = transcript1;
                         transcript1 = transcript2;
                         transcript2 = temp;
@@ -186,7 +186,6 @@ public class TranscriptLogic {
             }
         }
     }
-
     public static void totalTranscript() {
         for(int i=0;i<MainRun.transcripts.length;i++) {
             Transcript transcript = new Transcript();
