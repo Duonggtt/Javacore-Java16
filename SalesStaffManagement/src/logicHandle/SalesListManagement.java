@@ -60,27 +60,16 @@ public class SalesListManagement {
                 int itemId;
                 do {
                     itemId = new Scanner(System.in).nextInt();
-                    for(int k = 0;k< MainRun.items.length;k++) {
+                    for(int k = 0;k<= MainRun.items.length;k++) {
                         if(MainRun.items[k] != null && MainRun.items[k].getItemId() == itemId) {
                             item = MainRun.items[k];
                             break;
                         }
                     }
-                    if(item == null) {
-                        System.out.println("Ma mat hang khong hop le!Vui long nhap lai!");
-                        continue;
-                    }
-                    boolean idCheck = false;
-                    for(int k=0;k<= MainRun.items.length;k++) {
-                        if(MainRun.items[k] != null && MainRun.items[k].getItemId() == itemId) {
-                            idCheck = true;
-                            break;
-                        }
-                    }
-                    if(!idCheck) {
+                    if(item != null) {
                         break;
                     }
-                    System.out.println("ban vua moi nhap mat hang nay roi! Vui long nhap lai!");
+                    System.out.println("Ma mat hang khong hop le!Vui long nhap lai!");
                 }while(true);
                 System.out.println("Nhap so luong ban duoc cua mat hang mang ma " + itemId + " : ");
                 int itemQuantity = new Scanner(System.in).nextInt();
