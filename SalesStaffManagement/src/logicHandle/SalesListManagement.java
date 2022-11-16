@@ -148,10 +148,13 @@ public class SalesListManagement {
             if(MainRun.salesLists[i] == null) {
                 continue;
             }
-            SalesListDetail[] salesListDetails = new SalesListDetail[i];
+            SalesListDetail[] salesListDetails = MainRun.salesLists[i].getSalesListDetails();
             for(int j=0;j<salesListDetails.length-1;j++) {
+                if(salesListDetails[j] == null) {
+                    continue;
+                }
                 for(int k=j+1;k<salesListDetails.length;k++) {
-                    if(salesListDetails[j] == null) {
+                    if(salesListDetails[k] == null) {
                         continue;
                     }
                     if(salesListDetails[j].getItem().getItemType().compareTo(salesListDetails[k].getItem().getItemType()) > 0) {
