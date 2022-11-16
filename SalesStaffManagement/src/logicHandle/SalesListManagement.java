@@ -19,10 +19,15 @@ public class SalesListManagement {
         int staffNumber;
         do {
             staffNumber = new Scanner(System.in).nextInt();
-            if(staffNumber <= MainRun.staffcount) {
+            if(staffNumber >= MainRun.staffcount) {
+                System.out.println("So luong nhan vien vuot qua du lieu hien co! Vui long nhap lai!");
+                continue;
+            }
+
+            if(staffNumber > 0) {
                 break;
             }
-            System.out.println("So luong nhan vien vuot qua du lieu hien co! Vui long nhap lai!");
+            System.out.println("Vui long nhap so luong nhan vien khong duoc am!");
         }while(true);
         for(int i = 0;i<staffNumber;i++) {
             System.out.println("Nhan vien thu " + (i+1) + " : ");
@@ -65,10 +70,22 @@ public class SalesListManagement {
                             break;
                         }
                     }
-                    if(item != null) {
+                    if(item == null) {
+                        System.out.println("Ma mat hang khong hop le!Vui long nhap lai!");
+                        continue;
+                    }
+
+                    boolean isCheck = false;
+                    for (int k = 0;k<detail.length;k++) {
+                        if(detail[k] != null && detail[k].getItem().getItemId() == itemId)  {
+                            isCheck = true;
+                            break;
+                        }
+                    }
+                    if(!isCheck) {
                         break;
                     }
-                    System.out.println("Ma mat hang khong hop le!Vui long nhap lai!");
+                    System.out.println("Moi mat hang chi duoc nhap duy nhat 1 lan! Vui long nhap lai !");
                 }while(true);
                 System.out.println("Nhap so luong ban duoc cua mat hang mang ma " + itemId + " : ");
                 int itemQuantity = new Scanner(System.in).nextInt();
@@ -148,19 +165,18 @@ public class SalesListManagement {
             if(MainRun.salesLists[i] == null) {
                 continue;
             }
-            SalesListDetail[] salesListDetails = MainRun.salesLists[i].getSalesListDetails();
-            for(int j=0;j<salesListDetails.length-1;j++) {
-                if(salesListDetails[j] == null) {
+            for(int j=0;j<MainRun.salesLists[i].getSalesListDetails().length-1;j++) {
+                if(MainRun.salesLists[i].getSalesListDetails()[j] == null) {
                     continue;
                 }
-                for(int k=j+1;k<salesListDetails.length;k++) {
-                    if(salesListDetails[k] == null) {
+                for(int k=j+1;k<MainRun.salesLists[j].getSalesListDetails().length;k++) {
+                    if(MainRun.salesLists[i].getSalesListDetails()[k] == null) {
                         continue;
                     }
-                    if(salesListDetails[j].getItem().getItemType().compareTo(salesListDetails[k].getItem().getItemType()) > 0) {
-                        SalesListDetail temp = salesListDetails[j];
-                        salesListDetails[j] = salesListDetails[k];
-                        salesListDetails[k] = temp;
+                    if(MainRun.salesLists[i].getSalesListDetails()[j].getItem().getItemType().compareTo(MainRun.salesLists[i].getSalesListDetails()[k].getItem().getItemType()) > 0) {
+                        SalesListDetail temp = MainRun.salesLists[i].getSalesListDetails()[j];
+                        MainRun.salesLists[i].getSalesListDetails()[j] = MainRun.salesLists[i].getSalesListDetails()[k];
+                        MainRun.salesLists[i].getSalesListDetails()[k] = temp;
                     }
                 }
             }
