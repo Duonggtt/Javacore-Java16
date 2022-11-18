@@ -19,7 +19,7 @@ public class SalesListManagement {
         int staffNumber;
         do {
             staffNumber = new Scanner(System.in).nextInt();
-            if(staffNumber >= MainRun.staffcount) {
+            if(staffNumber > MainRun.staffcount) {
                 System.out.println("So luong nhan vien vuot qua du lieu hien co! Vui long nhap lai!");
                 continue;
             }
@@ -42,10 +42,21 @@ public class SalesListManagement {
                         break;
                     }
                 }
-            if(staff != null) {
+            if(staff == null) {
+                System.out.println("Ma nhan vien khong hop le! Vui long nhap lai!");
+                continue;
+            }
+            boolean isCheckStaff = false;
+            for(int j = 0;j<MainRun.salesLists.length;j++) {
+                if(MainRun.salesLists[j] != null && MainRun.salesLists[j].getStaff().getId() == staffId) {
+                    isCheckStaff = true;
+                    break;
+                }
+            }
+            if(!isCheckStaff) {
                 break;
             }
-            System.out.println("Ma nhan vien khong hop le! Vui long nhap lai!");
+                System.out.println("Vui long khong nhap trung nhan vien!");
             }while(true);
             System.out.println("Nhap so luong mat hang can them vao bang : ");
             int itemNum;
@@ -169,7 +180,7 @@ public class SalesListManagement {
                 if(MainRun.salesLists[i].getSalesListDetails()[j] == null) {
                     continue;
                 }
-                for(int k=j+1;k<MainRun.salesLists[j].getSalesListDetails().length;k++) {
+                for(int k=j+1;k<MainRun.salesLists[i].getSalesListDetails().length;k++) {
                     if(MainRun.salesLists[i].getSalesListDetails()[k] == null) {
                         continue;
                     }
