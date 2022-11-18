@@ -5,12 +5,21 @@ import java.util.Scanner;
 
 public class Items {
 
+    private static int AUTO_ID = 0;
     private int id;
     private String name;
     private String desc;
     private int quantity;
     private double price;
     private String unit;
+
+    public static int getAutoId() {
+        return AUTO_ID;
+    }
+
+    public static void setAutoId(int autoId) {
+        AUTO_ID = autoId;
+    }
 
     public int getId() {
         return id;
@@ -73,9 +82,8 @@ public class Items {
     }
     public static Items itemInput() {
         Items items = new Items();
-
-        System.out.println("Nhap id: ");
-        items.setId(new Scanner(System.in).nextInt());
+        AUTO_ID++;
+        items.id = AUTO_ID;
         System.out.println("Nhap name: ");
         items.setName(new Scanner(System.in).nextLine());
         System.out.println("Nhap description: ");

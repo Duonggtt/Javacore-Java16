@@ -39,13 +39,16 @@ public class MainRun {
                 listHandle.showArrayList();
                 break;
             case 3:
-                listHandle.searchItem
+                listHandle.searchItemByName();
                 break;
             case 4:
+                listHandle.searchItemById();
                 break;
             case 5:
+                listHandle.searchItemByQuantity();
                 break;
             case 6:
+                listHandle.searchItemByPrice();
                 break;
             case 7:
                 System.exit(functionChoice);
