@@ -73,10 +73,11 @@ public class listHandle {
                     System.out.println("Da xoa san pham co id " + itemId);
                     break;
                 case 2:
-                    System.out.println("Nhap so luong muon cap nhat cho san pham: ");
                     if(listItem.get(i).getId() == itemId) {
+                        System.out.println("Nhap so luong muon cap nhat cho san pham: ");
                         listItem.get(i).setQuantity(new Scanner(System.in).nextInt());
                     }
+                    System.out.println("Da cap nhat so luong san pham co id " + itemId);
                     break;
                 case 3:
                     return;
