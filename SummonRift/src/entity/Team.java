@@ -12,6 +12,10 @@ public class Team {
         this.figures = figures;
     }
 
+    public Team() {
+
+    }
+
     public int getId() {
         return id;
     }

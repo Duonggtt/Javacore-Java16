@@ -1,12 +1,15 @@
 package run;
 
+import entity.SummonRift;
 import logicHandle.InputOutputHandle;
 
 import java.util.Scanner;
 
 public class MainRun {
 
-    public static void main(String[] args) {
+    public static SummonRift summonRift = new SummonRift();
+
+    public static void main(String[] args) throws NumberFormatException{
         while(true) {
             showMenu();
             int functionChoice = functionHandle();
@@ -17,9 +20,10 @@ public class MainRun {
     private static void functionChoose(int functionChoice) {
         switch (functionChoice) {
             case 1:
-                InputOutputHandle.inputInfo();
+                summonRift = InputOutputHandle.inputInfo();
                 break;
             case 2:
+                InputOutputHandle.outputInfo(summonRift);
                 break;
             case 3:
                 System.exit(functionChoice);
