@@ -11,6 +11,7 @@ public class TeamHandle {
 
     public static Team inputInfo() throws NumberFormatException{
         Team team = new Team();
+        System.out.println("=========================");
         System.out.println("Nhập id team: ");
         team.setId(Integer.parseInt(new Scanner(System.in).nextLine()));
         ArrayList<Figure> figures = new ArrayList<>();
