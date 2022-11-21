@@ -15,8 +15,7 @@ public class StudentHandle {
 
     public Student studentInput() throws ParseException {
         Student student = new Student();
-        System.out.println("Nhập id học viên: ");
-        student.setId(Integer.parseInt(new Scanner(System.in).nextLine()));
+
         System.out.println("Nhập tên học viên: ");
         student.setName(new Scanner(System.in).nextLine());
         System.out.println("Nhập ngày tháng năm sinh của học viên (dd/MM/yyyy): ");

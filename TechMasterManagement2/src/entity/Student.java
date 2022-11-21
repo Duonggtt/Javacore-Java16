@@ -5,9 +5,16 @@ import java.util.Date;
 public class Student {
 
     private int id;
+    private static int autoId=0;
     private String name;
     private Date dob;
     private String rank;
+
+    public Student() {
+        autoId++;
+        this.id = autoId;
+    }
+
 
     public int getId() {
         return id;
