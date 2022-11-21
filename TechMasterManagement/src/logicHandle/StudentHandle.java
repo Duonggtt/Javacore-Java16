@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class StudentHandle {
 
 
-    public static Student student = new Student();
+    public Student student = new Student();
     public static Student inputInfo() {
         student = new Student();
         System.out.println("Nhập vào thông tin học viên.");

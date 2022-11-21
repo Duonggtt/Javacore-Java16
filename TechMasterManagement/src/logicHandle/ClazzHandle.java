@@ -9,8 +9,8 @@ import java.util.Scanner;
 
 public class ClazzHandle {
     public static ArrayList<Student> students = new ArrayList<>();
-    public static Clazz clazz = new Clazz();
-    public static Clazz inputInfo() {
+    Clazz clazz = new Clazz();
+    public Clazz inputInfo() {
         System.out.println("Nhập môn học: ");
         clazz.setSubject(new Scanner(System.in).nextLine());
         System.out.println("Nhập vào thông tin học viên");
