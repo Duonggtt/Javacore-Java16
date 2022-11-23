@@ -7,6 +7,11 @@ public class Student {
     private String name;
     private String address;
 
+    public Student() {
+        AUTO_ID++;
+        this.id = AUTO_ID;
+    }
+
     public int getId() {
         return id;
     }
