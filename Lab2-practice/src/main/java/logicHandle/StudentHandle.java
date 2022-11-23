@@ -11,7 +11,8 @@ public class StudentHandle {
     public Student studentInput() {
         while(true) {
         try {
-            Student student = new Student();
+        Student student = new Student();
+        System.out.println("=====================");
         System.out.println("Nhap ten student: ");
         student.setName(new Scanner(System.in).nextLine());
         System.out.println("Nhap diem toan: ");
