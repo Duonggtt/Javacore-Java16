@@ -2,6 +2,7 @@
 package main.java.entity;
 
 public class Student {
+    private  int AUTO_ID = 0;
     private int id;
     private String name;
     private float scoreMath;
@@ -9,6 +10,11 @@ public class Student {
     private float scoreChemistry;
     private float avgScore = 0;
     private String rank;
+
+    public Student() {
+        AUTO_ID++;
+        this.id = AUTO_ID;
+    }
 
     public float getAvgScore() {
         return avgScore;
