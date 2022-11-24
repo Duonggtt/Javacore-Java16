@@ -46,11 +46,15 @@ public class MainRun {
     private static int functionHandle() {
         int functionChoice;
         do{
-            functionChoice = new Scanner(System.in).nextInt();
-            if(functionChoice >=1 && functionChoice <=6) {
-                break;
+            try{
+                functionChoice = new Scanner(System.in).nextInt();
+                if(functionChoice >=1 && functionChoice <=6) {
+                    break;
+                }
+                System.out.println("Thao tác không hợp lệ! Vui lòng chọn lại: ");
+            }catch(Exception e){
+                System.out.println("Invalid input type! import again: ");
             }
-            System.out.println("Thao tác không hợp lệ! Vui lòng chọn lại: ");
         }while(true);
         return functionChoice;
     }

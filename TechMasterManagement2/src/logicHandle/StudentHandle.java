@@ -15,15 +15,21 @@ public class StudentHandle {
 
     public Student studentInput() throws ParseException {
         Student student = new Student();
-
-        System.out.println("Nhập tên học viên: ");
-        student.setName(new Scanner(System.in).nextLine());
-        System.out.println("Nhập ngày tháng năm sinh của học viên (dd/MM/yyyy): ");
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date dob = simpleDateFormat.parse(new Scanner(System.in).nextLine());
-        student.setDob(dob);
-        System.out.println("Nhập xếp loại của học viên: ");
-        student.setRank(new Scanner(System.in).nextLine());
+        while(true){
+            try{
+                System.out.println("Nhập tên học viên: ");
+                student.setName(new Scanner(System.in).nextLine());
+                System.out.println("Nhập ngày tháng năm sinh của học viên (dd/MM/yyyy): ");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date dob = simpleDateFormat.parse(new Scanner(System.in).nextLine());
+                student.setDob(dob);
+                System.out.println("Nhập xếp loại của học viên: ");
+                student.setRank(new Scanner(System.in).nextLine());
+                break;
+            }catch(Exception e) {
+                System.out.println("Invalid input type! Import again: ");
+            }
+        }
         return student;
     }
 
@@ -34,11 +40,26 @@ public class StudentHandle {
 
     public void updateStudentRankById(Center center) {
         System.out.println("Nhập id học viên bạn muốn update rank: ");
-        int studentId = new Scanner(System.in).nextInt();
+        int studentId= 0;
+        while(true){
+            try{
+                studentId = new Scanner(System.in).nextInt();
+                break;
+            }catch(Exception e){
+                System.out.println("Invalid input type! Import again: ");
+            }
+        }
         for(int i =0;i<center.getClazz().getStudents().size();i++){
             if(center.getClazz().getStudents().get(i).getId() == studentId && center.getClazz().getStudents().size() > 0) {
                 System.out.println("Nhập xếp hạng mới cho học viên mang id " + studentId);
-                center.getClazz().getStudents().get(i).setRank(new Scanner(System.in).nextLine());
+                while(true){
+                    try {
+                        center.getClazz().getStudents().get(i).setRank(new Scanner(System.in).nextLine());
+                        break;
+                    }catch(Exception e){
+                        System.out.println("Invalid input type! Import again: ");
+                    }
+                }
                 break;
             }
         }
@@ -47,7 +68,15 @@ public class StudentHandle {
 
     public void removeStudentById(Center center) {
         System.out.println("Nhập id học viên bạn muốn xóa: ");
-        int studentId = new Scanner(System.in).nextInt();
+        int studentId = 0;
+        while(true){
+            try{
+                studentId = new Scanner(System.in).nextInt();
+                break;
+            }catch(Exception e){
+                System.out.println("Invalid input type! Import again: ");
+            }
+        }
         for(int i =0;i<center.getClazz().getStudents().size();i++){
             if(center.getClazz().getStudents().get(i).getId() == studentId && center.getClazz().getStudents().size() > 0) {
                 center.getClazz().getStudents().remove(i);
