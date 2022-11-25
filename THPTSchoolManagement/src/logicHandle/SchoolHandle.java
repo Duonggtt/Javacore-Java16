@@ -14,7 +14,7 @@ public class SchoolHandle {
     // Xoa het di lm lai tu dau nhe =]]]] =)))) kho the
     // cu lm static ntn la vi pham tinh dong goi r e
     // h: e xoa het di tao project moi, e tao truoc cac doi tuong cho a
-    sau a huong dan okii a
+//    sau a huong dan okii a
     public School inputInfo() throws ParseException {
         school = new School();
         System.out.println("Import course : " );

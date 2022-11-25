@@ -2,34 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee066c39-0275-4044-9e32-a988cb67947d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../ReporterManagement/src/LogicHandle/PostLogic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ReporterManagement/src/LogicHandle/PostManagementLogic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ReporterManagement/src/LogicHandle/ReporterLogic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ReporterManagement/src/constant/ReporterType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ReporterManagement/src/entity/InputTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ReporterManagement/src/entity/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ReporterManagement/src/entity/Post.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ReporterManagement/src/entity/PostDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ReporterManagement/src/entity/PostManagement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ReporterManagement/src/entity/Reporter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ReporterManagement/src/run/MainRun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/QL_DiemSinhVien.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/QL_DiemSinhVien/Constant/SubjectTypeConstant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/QL_DiemSinhVien/MainRun.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/QL_DiemSinhVien/entity/Person.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/QL_DiemSinhVien/entity/Student.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/QL_DiemSinhVien/entity/Subject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/QL_DiemSinhVien/entity/Transcript.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Constant/SubjectTypeConstant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainRun.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Person.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Student.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Subject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entity/Transcript.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../THPTSchoolManagement/src/logicHandle/SchoolHandle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../THPTSchoolManagement/src/logicHandle/SchoolHandle.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +70,7 @@
       <workItem from="1668065525366" duration="8000" />
       <workItem from="1668147926017" duration="133000" />
       <workItem from="1668326594822" duration="112000" />
+      <workItem from="1669296870359" duration="11000" />
     </task>
     <servers />
   </component>
