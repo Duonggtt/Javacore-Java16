@@ -117,7 +117,7 @@ public class PetHandle {
                             break;
                     }
                 }
-                if(isCheck){
+                if(!isCheck){
                     System.out.println("there are no pet valid to match!");
                 }
                 break;
