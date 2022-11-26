@@ -158,6 +158,12 @@ public class ResetPassword extends javax.swing.JFrame {
         String reNewPass= new String(txtConfirmNewPass.getText());
         LoginForm loginForm = new LoginForm();
         
+        if(newPass.equals("") &&reNewPass.equals("")){
+            sb.append("Password is required!");
+            txtNewPass.setBackground(Color.red);
+            txtConfirmNewPass.setBackground(Color.red);
+        }
+        
         if(newPass.equals(reNewPass)){
             txtNewPass.setBackground(Color.green);
             txtConfirmNewPass.setBackground(Color.green);
