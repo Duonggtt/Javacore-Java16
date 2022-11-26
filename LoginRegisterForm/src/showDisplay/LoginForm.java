@@ -6,7 +6,7 @@ package showDisplay;
 
 import entityDisplay.UserForm;
 import entityDisplay.AdminForm;
-import Run.MainRun;
+import run.MainRun;
 import logicHandle.ForgotPassword;
 import entity.User;
 import entity.Admin;

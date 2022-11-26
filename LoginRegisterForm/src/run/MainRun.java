@@ -1,4 +1,4 @@
-package Run;
+package run;
 
 import entity.User;
 import entity.Admin;

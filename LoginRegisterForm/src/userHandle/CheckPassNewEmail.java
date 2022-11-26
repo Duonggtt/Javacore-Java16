@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package UserHandle;
+package userHandle;
 
-import Run.MainRun;
+import run.MainRun;
 import entityDisplay.UserForm;
 import java.awt.Color;
 import javax.swing.JFrame;

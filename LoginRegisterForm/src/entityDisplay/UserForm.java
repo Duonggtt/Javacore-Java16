@@ -8,9 +8,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 import javax.swing.JFrame;
-import UserHandle.CheckPassNewEmail;
-import UserHandle.CheckPassNewPass;
-import UserHandle.CheckPassNewUserName;
+import userHandle.CheckPassNewEmail;
+import userHandle.CheckPassNewPass;
+import userHandle.CheckPassNewUserName;
 import javax.swing.JOptionPane;
 import showDisplay.LogOrRegForm;
 

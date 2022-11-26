@@ -4,7 +4,7 @@
  */
 package logicHandle;
 
-import Run.MainRun;
+import run.MainRun;
 import entity.User;
 import java.awt.Color;
 import javax.swing.JFrame;

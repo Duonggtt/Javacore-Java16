@@ -8,7 +8,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import showDisplay.LoginForm;
-import Run.MainRun;
+import run.MainRun;
 
 /**
  *
