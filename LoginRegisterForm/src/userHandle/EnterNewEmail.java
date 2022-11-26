@@ -7,6 +7,7 @@ package userHandle;
 import run.MainRun;
 import entityDisplay.UserForm;
 import java.awt.Color;
+import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -147,11 +148,16 @@ public class EnterNewEmail extends javax.swing.JFrame {
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         StringBuilder sb = new StringBuilder();
         UserForm userForm = new UserForm();
+        String regexPatternEmail = "^(.+)@(\\S+)$";
         String newEmail = new String(txtNewEmail.getText());
         if(newEmail.equals("")){
             sb.append("New email is required!");
             txtNewEmail.setBackground(Color.red);
-        }else {
+        }else if(!Pattern.compile(regexPatternEmail).matcher(newEmail).matches()){
+            sb.append("Invalid email form!");
+            txtNewEmail.setBackground(Color.red);
+        }
+        else {
             for(int i=0;i<MainRun.users.size();i++){
                 MainRun.users.get(i).setEmail(newEmail);
             txtNewEmail.setBackground(Color.green);
