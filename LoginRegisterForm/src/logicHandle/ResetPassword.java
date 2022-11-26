@@ -7,6 +7,7 @@ package logicHandle;
 import run.MainRun;
 import entity.User;
 import java.awt.Color;
+import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import showDisplay.LoginForm;
@@ -157,25 +158,26 @@ public class ResetPassword extends javax.swing.JFrame {
         String newPass= new String(txtNewPass.getText());
         String reNewPass= new String(txtConfirmNewPass.getText());
         LoginForm loginForm = new LoginForm();
-        
+        String regexPatternPass = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*_-]).{7,15}$";
         if(newPass.equals("") &&reNewPass.equals("")){
-            sb.append("Password is required!");
+            sb.append("Password is required");
             txtNewPass.setBackground(Color.red);
             txtConfirmNewPass.setBackground(Color.red);
-        }
-        
-        if(newPass.equals(reNewPass)){
+        }else if(!Pattern.compile(regexPatternPass).matcher(newPass).matches()){
+             sb.append("Password is not valid!\n");
+            txtNewPass.setBackground(Color.red);
+        }else if(newPass.equals(reNewPass) && !newPass.equals("")){
             txtNewPass.setBackground(Color.green);
             txtConfirmNewPass.setBackground(Color.green);
             for(int i=0;i<MainRun.users.size();i++){
                 MainRun.users.get(i).setPassword(newPass);
             }
-            sb.append("Reset password success!");
+            sb.append("Update password success!");
             loginForm.setVisible(true);
             this.setVisible(false);
             
         }else{
-            sb.append("Confirm password is not valid! Enter again!");
+            sb.append("Confirm password is not valid!");
             txtConfirmNewPass.setBackground(Color.green);
         }
         

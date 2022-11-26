@@ -7,6 +7,7 @@ package userHandle;
 import run.MainRun;
 import entityDisplay.UserForm;
 import java.awt.Color;
+import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import showDisplay.LoginForm;
@@ -161,8 +162,17 @@ public class EnterNewPass extends javax.swing.JFrame {
         String newPass= new String(txtNewPass.getText());
         String reNewPass= new String(txtNewRePass.getText());
         UserForm userForm = new UserForm();
+        String regexPatternPass = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*_-]).{7,15}$";
         
-        if(newPass.equals(reNewPass)){
+        if(newPass.equals("") && reNewPass.equals("")){
+            sb.append(" New password is required!");
+            txtNewPass.setBackground(Color.red);
+            txtNewRePass.setBackground(Color.red);
+        }else if(!Pattern.compile(regexPatternPass).matcher(newPass).matches()){
+            sb.append("Password is not valid!\n");
+            txtNewPass.setBackground(Color.red);
+        }
+        else if(newPass.equals(reNewPass) && !newPass.equals("")){
             txtNewPass.setBackground(Color.green);
             txtNewRePass.setBackground(Color.green);
             for(int i=0;i<MainRun.users.size();i++){
@@ -172,10 +182,6 @@ public class EnterNewPass extends javax.swing.JFrame {
             userForm.setVisible(true);
             this.setVisible(false);
             
-        }else if(newPass.equals("") && reNewPass.equals("")){
-            sb.append(" New password is required!");
-            txtNewPass.setBackground(Color.red);
-            txtNewRePass.setBackground(Color.red);
         }
         else{
             sb.append("Confirm password is not valid! Enter again!");
@@ -186,10 +192,7 @@ public class EnterNewPass extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, sb.toString());
             return;
         }
-        if(sb.length()>0){
-            JOptionPane.showMessageDialog(this, sb.toString());
-            return;
-        }
+        
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void txtNewRePassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewRePassActionPerformed
