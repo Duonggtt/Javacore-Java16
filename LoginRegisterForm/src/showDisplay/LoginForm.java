@@ -207,6 +207,9 @@ public class LoginForm extends javax.swing.JFrame {
         StringBuilder sb = new StringBuilder();
         String username = new String(txtUsernameForm.getText());
         String pass = new String(txtPasswordForm.getText());
+        UserForm userForm = new UserForm();
+        AdminForm adminForm = new AdminForm();
+        
         
         if(username.equals("")){
             sb.append("UserName is required!\n");
@@ -220,10 +223,6 @@ public class LoginForm extends javax.swing.JFrame {
         }else{
             txtPasswordForm.setBackground(Color.green);
         }
-        
-        
-        UserForm userForm = new UserForm();
-        AdminForm adminForm = new AdminForm();
         boolean isCheck = false;
         for(Admin ad: MainRun.admins){
             if(username.equals(ad.getUserName()) && pass.equals(ad.getPassword())){
@@ -234,15 +233,14 @@ public class LoginForm extends javax.swing.JFrame {
                 break;
             }
         }
-            for(int i=0;i<MainRun.users.size();i++){
-                if(username.equals(MainRun.users.get(i).getUserName()) && pass.equals(MainRun.users.get(i).getPassword())){
-                    
-                    sb.append("Welcom back ");sb.append(username);
-                    userForm.setVisible(true);
-                    this.setVisible(false);
-                    isCheck = true;
-                    break;
-                }
+        for(int i=0;i<MainRun.users.size();i++){
+            if(username.equals(MainRun.users.get(i).getUserName()) && pass.equals(MainRun.users.get(i).getPassword())){
+                sb.append("Welcom back ");sb.append(username);
+                userForm.setVisible(true);
+                this.setVisible(false);
+                isCheck = true;
+                break;
+            }
         }
         if(!isCheck){
             sb.append("This acount is not exist! Please login again or register a new acount!");

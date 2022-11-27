@@ -244,115 +244,130 @@ public class RegisterForm extends javax.swing.JFrame {
         String email = txtEmailRegisterForm.getText();
         while(true){
             try{
+//============= username ====================================================================================
+                
                 if(username.equals("")){
-            sb.append("Username is required!\n");
-            txtUsernameRegiserForm.setBackground(Color.red);
-        }else{
-            txtUsernameRegiserForm.setBackground(Color.green);
-        }
-        for(int i =0;i<MainRun.users.size();i++){
-            if(username.equals(MainRun.users.get(i).getUserName())){
-                sb.append("This username is already exist!");
-                txtUsernameRegiserForm.setBackground(Color.red);
-            }else{
+                    sb.append("Username is required!\n");
+                    txtUsernameRegiserForm.setBackground(Color.red);
+                }else{
+                    txtUsernameRegiserForm.setBackground(Color.green);
+                }
+                for(int i =0;i<MainRun.users.size();i++){
+                    if(username.equals(MainRun.users.get(i).getUserName())){
+                        sb.append("This username is already exist!");
+                        txtUsernameRegiserForm.setBackground(Color.red);
+                    }else{
+                        txtUsernameRegiserForm.setBackground(Color.green);
+                    }
+                }
+                
+//============= pasword ==========================================================================================
+                String regexPatternPass = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*_-]).{7,15}$";
+                if(password.equals("")){
+                    sb.append("Password is required!\n");
+                    txtPasswordRegisterForm.setBackground(Color.red);
+                    txtRePasswordRegisterForm.setBackground(Color.red);
+                }
+                else if(rePassword.equals("") && !password.equals(rePassword)){
+                    sb.append("ComfirmPass is not valid!\n");
+                    txtRePasswordRegisterForm.setBackground(Color.red);
+                }else if(!rePassword.equals("") && !password.equals(rePassword)){
+                    sb.append("ComfirmPass is not valid!\n");
+                    txtRePasswordRegisterForm.setBackground(Color.red);
+                }
+                else if(rePassword.equals("") && password.equals(rePassword)){
+                    sb.append("ComfirmPass is required!\n");
+                    txtRePasswordRegisterForm.setBackground(Color.red);
+                    txtPasswordRegisterForm.setBackground(Color.red);
+                }
+                else if(!Pattern.compile(regexPatternPass).matcher(password).matches()){
+                     sb.append("Invalid password form!\n");
+                    txtPasswordRegisterForm.setBackground(Color.red);
+                }
+                else{
+                    txtRePasswordRegisterForm.setBackground(Color.green);
+                    txtPasswordRegisterForm.setBackground(Color.green);
+                }
+                
+//============= email ==========================================================================================
+                String regexPatternEmail = "^(.+)@(\\S+)$";
+                if(email.equals("")){
+                    sb.append("Email is required!\n");
+                    txtEmailRegisterForm.setBackground(Color.red);
+                }else if(!Pattern.compile(regexPatternEmail).matcher(email).matches()){
+                    sb.append("Invalid email form!");
+                    txtEmailRegisterForm.setBackground(Color.red);
+                }
+                else{
+                    txtEmailRegisterForm.setBackground(Color.green);
+                }
+                
+//============= phone ==========================================================================================
+                if(phone.equals("")){
+                    sb.append("Phone is required!\n");
+                    txtPhoneRegisterForm.setBackground(Color.red);
+                }else{
+                    txtPhoneRegisterForm.setBackground(Color.green);
+
+                }
+                
+//============= gender ==========================================================================================
+                boolean isMale = maleCheckbox.isSelected();
+                boolean isFemale = femaleCheckbox.isSelected();
+                if(isMale){
+                    user.setSex("male");
+                    maleCheckbox.setBackground(Color.green);
+                    femaleCheckbox.setBackground(Color.green);
+                }else if(isFemale){
+                    user.setSex("female");
+                    maleCheckbox.setBackground(Color.green);
+                    femaleCheckbox.setBackground(Color.green);
+                }else{
+                    sb.append("Sex checkbox is required!");
+                    maleCheckbox.setBackground(Color.red);
+                    femaleCheckbox.setBackground(Color.red);
+                }
+                
+//============= check trùng username và email ======================================================================
+
+                for(int i =0;i<MainRun.users.size();i++){
+                    if(MainRun.users.size()>0){
+                        if(email.equals(MainRun.users.get(i).getEmail()) || username.equals(MainRun.users.get(i).getUserName())){
+                        sb.append("This acount is already exist! Enter another acount!");
+                        txtEmailRegisterForm.setBackground(Color.red);
+                        txtUsernameRegiserForm.setBackground(Color.red);
+                        }
+                    }
+                }
+                break;
+                    }catch(Exception e){
+                        sb.append("Invalid input type!");
+                    }
+                }
+
+                if(sb.length()>0){
+                    JOptionPane.showMessageDialog(this, sb.toString());
+                    return;
+                }
+                JOptionPane.showMessageDialog(this, "Register compelete! Please login again!");
+
                 txtUsernameRegiserForm.setBackground(Color.green);
-            }
-        }
-        String regexPatternPass = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*_-]).{7,15}$";
-        if(password.equals("")){
-            sb.append("Password is required!\n");
-            txtPasswordRegisterForm.setBackground(Color.red);
-            txtRePasswordRegisterForm.setBackground(Color.red);
-        }
-        else if(rePassword.equals("") && !password.equals(rePassword)){
-            sb.append("ComfirmPass is not valid!\n");
-            txtRePasswordRegisterForm.setBackground(Color.red);
-        }else if(!rePassword.equals("") && !password.equals(rePassword)){
-            sb.append("ComfirmPass is not valid!\n");
-            txtRePasswordRegisterForm.setBackground(Color.red);
-        }
-        else if(rePassword.equals("") && password.equals(rePassword)){
-            sb.append("ComfirmPass is required!\n");
-            txtRePasswordRegisterForm.setBackground(Color.red);
-            txtPasswordRegisterForm.setBackground(Color.red);
-        }
-        else if(!Pattern.compile(regexPatternPass).matcher(password).matches()){
-             sb.append("Invalid password form!\n");
-            txtPasswordRegisterForm.setBackground(Color.red);
-        }
-        else{
-            txtRePasswordRegisterForm.setBackground(Color.green);
-            txtPasswordRegisterForm.setBackground(Color.green);
-        }
-        String regexPatternEmail = "^(.+)@(\\S+)$";
-        if(email.equals("")){
-            sb.append("Email is required!\n");
-            txtEmailRegisterForm.setBackground(Color.red);
-        }else if(!Pattern.compile(regexPatternEmail).matcher(email).matches()){
-            sb.append("Invalid email form!");
-            txtEmailRegisterForm.setBackground(Color.red);
-        }
-        else{
-            txtEmailRegisterForm.setBackground(Color.green);
-        }
-        if(phone.equals("")){
-            sb.append("Phone is required!\n");
-            txtPhoneRegisterForm.setBackground(Color.red);
-        }else{
-            txtPhoneRegisterForm.setBackground(Color.green);
-            
-        }
-        boolean isMale = maleCheckbox.isSelected();
-        boolean isFemale = femaleCheckbox.isSelected();
+                txtPasswordRegisterForm.setBackground(Color.green);
+                txtPhoneRegisterForm.setBackground(Color.green);
+                txtEmailRegisterForm.setBackground(Color.green);
 
-        if(isMale){
-            user.setSex("male");
-            maleCheckbox.setBackground(Color.green);
-            femaleCheckbox.setBackground(Color.green);
-        }else if(isFemale){
-            user.setSex("female");
-            maleCheckbox.setBackground(Color.green);
-            femaleCheckbox.setBackground(Color.green);
-        }else{
-            sb.append("Sex checkbox is required!");
-            maleCheckbox.setBackground(Color.red);
-            femaleCheckbox.setBackground(Color.red);
-        }
-            
-        for(int i =0;i<MainRun.users.size();i++){
-            if(MainRun.users.size()>0){
-                if(email.equals(MainRun.users.get(i).getEmail()) || username.equals(MainRun.users.get(i).getUserName())){
-                sb.append("This acount is already exist! Enter another acount!");
-                txtEmailRegisterForm.setBackground(Color.red);
-                txtUsernameRegiserForm.setBackground(Color.red);
-            }
-            }
-        }
-        break;
-            }catch(Exception e){
-                sb.append("Invalid input type!");
-            }
-        }
+//============= lưu vào đối tượng user ======================================================================
+                user.setUserName(username);
+                user.setPassword(password);
+                user.setEmail(email);
+                user.setPhone(phone);
+                
+//============= Lưu vào list ================================================================================
+                MainRun.users.add(user);
+                LoginForm loginForm = new LoginForm();
+                loginForm.setVisible(true);
+                this.setVisible(false);
 
-        if(sb.length()>0){
-            JOptionPane.showMessageDialog(this, sb.toString());
-            return;
-        }
-        JOptionPane.showMessageDialog(this, "Register compelete! Please login again!");
-        
-        txtUsernameRegiserForm.setBackground(Color.green);
-        txtPasswordRegisterForm.setBackground(Color.green);
-        txtPhoneRegisterForm.setBackground(Color.green);
-        txtEmailRegisterForm.setBackground(Color.green);
-        
-        user.setUserName(username);
-        user.setPassword(password);
-        user.setEmail(email);
-        user.setPhone(phone);
-        MainRun.users.add(user);
-        LoginForm loginForm = new LoginForm();
-        loginForm.setVisible(true);
-        this.setVisible(false);
 
     }//GEN-LAST:event_registerBtnActionPerformed
 
