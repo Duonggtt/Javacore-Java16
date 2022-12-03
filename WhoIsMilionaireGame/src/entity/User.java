@@ -51,7 +51,7 @@ public class User extends Person{
 
     @Override
     public String getPassword() {
-        return super.getPassword(); // 
+        return super.getPassword(); 
     }
 
     @Override
@@ -61,13 +61,19 @@ public class User extends Person{
 
     @Override
     public String getUserName() {
-        return super.getUserName(); 
+        return super.getUserName();
+    }
+
+    
+    @Override
+    public void login() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public String toString() {
-        return "User{" + "email=" + email + ", MoneyBonus=" + MoneyBonus + '}';
+        return userName+ "\t" + password + "\t" + email;
     }
-
+    
     
 }

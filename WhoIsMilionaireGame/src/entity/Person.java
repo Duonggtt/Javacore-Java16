@@ -8,9 +8,13 @@ package entity;
  *
  * @author LENOVO
  */
-public class Person {
+public abstract class Person {
     protected String userName;
     protected String password;
+    
+    
+    //tinh triu tuong
+    public abstract void login();
 
     public String getUserName() {
         return userName;

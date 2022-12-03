@@ -372,7 +372,6 @@ public class SignUpForm extends javax.swing.JFrame {
     }//GEN-LAST:event_registerBtnActionPerformed
 
     
-    
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
         LoginForm loginForm = new LoginForm();
         loginForm.setVisible(true);

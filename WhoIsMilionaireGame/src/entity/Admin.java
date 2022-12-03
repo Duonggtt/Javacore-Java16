@@ -43,6 +43,11 @@ public class Admin extends Person{
         return "Admin{" + "userName=" + userName + ", password=" + password + '}';
     }
 
+    @Override
+    public void login() {
+        
+    }
+
     
     
 }

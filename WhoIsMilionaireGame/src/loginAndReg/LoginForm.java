@@ -311,9 +311,7 @@ public class LoginForm extends javax.swing.JFrame {
         }else{
             txtPasswordForm.setBackground(Color.green);
         }
-        
-        
-        
+         
         AdminForm adminForm = new AdminForm();
         boolean isCheck = false;
         for(Admin ad: MainRun.admins){
@@ -345,7 +343,8 @@ public class LoginForm extends javax.swing.JFrame {
                 return;
         }
     }//GEN-LAST:event_loginBtnActionPerformed
-
+    
+    
     private void regisBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regisBtnMouseClicked
        SignUpForm signUpForm = new SignUpForm();
         signUpForm.setVisible(true);

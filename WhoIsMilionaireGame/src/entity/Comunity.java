@@ -4,10 +4,12 @@
  */
 package entity;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author LENOVO
  */
 public class Comunity {
-    
+    private ArrayList<Person> persons = new ArrayList<>();
 }
