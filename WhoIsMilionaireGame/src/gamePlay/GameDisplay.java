@@ -5,6 +5,7 @@ import entity.Answer;
 import entity.Price;
 import entity.Question;
 import entity.User;
+import jaco.mp3.player.MP3Player;
 import java.awt.Color;
 import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
@@ -29,7 +30,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import loginAndReg.SignUpForm;
 import run.MainRun;
-
+import javax.sound.sampled.*;
 /**
  *
  * @author LENOVO
@@ -897,8 +898,9 @@ public class GameDisplay extends javax.swing.JFrame {
                 
                 int choice = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 1.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi từ 1.000.000 - 10.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice == JOptionPane.YES_OPTION){
-                       
+                    
                 }else{
+                    mp3Incorrect.play();
                     win = true;
                     egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
@@ -910,8 +912,9 @@ public class GameDisplay extends javax.swing.JFrame {
                 
                 int choice2 = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 14.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi từ 14.000.000 - 85.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice2 == JOptionPane.YES_OPTION){
-
+                    
                 }else{
+                    mp3Incorrect.play();
                     win = true;
                     egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
@@ -922,8 +925,9 @@ public class GameDisplay extends javax.swing.JFrame {
                 
                 int choice3 = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 14.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi 150.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice3 == JOptionPane.YES_OPTION){
-
+                    
                 }else{
+                    mp3Incorrect.play();
                     win = true;
                     egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
@@ -932,7 +936,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 }
             }
             else if(id > 15){
-
+                mp3Winner.play();
                 user.setMoneyBonus(getPriceById(15));
                 sb.append("XIN CHÚC MỪNG BẠN ĐÃ TRỞ THÀNH TRIỆU PHÚ!");
                 this.setVisible(false);
@@ -946,6 +950,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 win = true;
             }
             if(!win){
+                mp3Corect.play();
                 Question question = questions.get(id-1);
                 txtQuess.setText(question.getTitle());
                 txtQuesId.setText(id+"");
@@ -987,6 +992,7 @@ public class GameDisplay extends javax.swing.JFrame {
             }
             
         }else {
+            mp3Incorrect.play();
             sb.append("Bạn đã trả lời sai mất rồi!\n Rất tiếc bạn phải dừng cuộc chơi ở đây!");
             if (id> 5 && id <=11) {
                 user.setMoneyBonus("1.000.000");
@@ -1020,8 +1026,9 @@ public class GameDisplay extends javax.swing.JFrame {
             if(id >= 5 && id <10){
                 int choice = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 1.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi từ 1.000.000 - 10.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice == JOptionPane.YES_OPTION){
-
+                    
                 }else{
+                    mp3Incorrect.play();
                     win = true;
                     egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
@@ -1031,8 +1038,9 @@ public class GameDisplay extends javax.swing.JFrame {
             }else if(id >= 10 && id <15){
                 int choice2 = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 14.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi từ 14.000.000 - 85.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice2 == JOptionPane.YES_OPTION){
-
+                    
                 }else{
+                    mp3Incorrect.play();
                     win = true;
                     egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
@@ -1042,8 +1050,9 @@ public class GameDisplay extends javax.swing.JFrame {
             }else if(id ==15){
                 int choice3 = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 14.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi 150.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice3 == JOptionPane.YES_OPTION){
-
+                    
                 }else{
+                    mp3Incorrect.play();
                     win = true;
                     egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
@@ -1052,7 +1061,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 }
             }
             else if(id > 15){
-
+                mp3Winner.play();
                 user.setMoneyBonus(getPriceById(15));
                 sb.append("XIN CHÚC MỪNG BẠN ĐÃ TRỞ THÀNH TRIỆU PHÚ!");
                 this.setVisible(false);
@@ -1066,6 +1075,7 @@ public class GameDisplay extends javax.swing.JFrame {
                  win= true;
             }
             if(!win){
+                mp3Corect.play();
                 Question question = questions.get(id-1);
             txtQuess.setText(question.getTitle());
             txtQuesId.setText(id+"");
@@ -1108,6 +1118,7 @@ public class GameDisplay extends javax.swing.JFrame {
             
 
         }else {
+            mp3Incorrect.play();
             sb.append("Bạn đã trả lời sai mất rồi!\n Rất tiếc bạn phải dừng cuộc chơi ở đây!");
             if (id> 5 && id <=11) {
                 user.setMoneyBonus("1.000.000");
@@ -1136,8 +1147,9 @@ public class GameDisplay extends javax.swing.JFrame {
             if(id >= 5 && id <10){
                 int choice = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 1.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi từ 1.000.000 - 10.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice == JOptionPane.YES_OPTION){
-
+                    
                 }else{
+                    mp3Incorrect.play();
                     win = true;
                     egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
@@ -1147,8 +1159,9 @@ public class GameDisplay extends javax.swing.JFrame {
             }else if(id >= 10 && id <15){
                 int choice2 = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 14.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi từ 14.000.000 - 85.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice2 == JOptionPane.YES_OPTION){
-
+                    
                 }else{
+                    mp3Incorrect.play();
                     win = true;
                     egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
@@ -1158,8 +1171,9 @@ public class GameDisplay extends javax.swing.JFrame {
             }else if(id ==15){
                 int choice3 = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 14.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi 150.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice3 == JOptionPane.YES_OPTION){
-
+                    
                 }else{
+                    mp3Incorrect.play();
                     win = true;
                     egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
@@ -1169,6 +1183,7 @@ public class GameDisplay extends javax.swing.JFrame {
             }
            
             else if(id > 15){
+                mp3Winner.play();
                 user.setMoneyBonus(getPriceById(15));
                 sb.append("XIN CHÚC MỪNG BẠN ĐÃ TRỞ THÀNH TRIỆU PHÚ!");
                 this.setVisible(false);
@@ -1183,6 +1198,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 
             }
             if(!win){
+                mp3Corect.play();
                 Question question = questions.get(id-1);
             txtQuess.setText(question.getTitle());
             txtQuesId.setText(id+"");
@@ -1225,6 +1241,7 @@ public class GameDisplay extends javax.swing.JFrame {
             
         }
         else {
+            mp3Incorrect.play();
             sb.append("Bạn đã trả lời sai mất rồi!\n Rất tiếc bạn phải dừng cuộc chơi ở đây!");
             if (id> 5 && id <=11) {
                 user.setMoneyBonus("1.000.000");
@@ -1258,7 +1275,9 @@ public class GameDisplay extends javax.swing.JFrame {
             if(id >= 5 && id <10){
                 int choice = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 1.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi từ 1.000.000 - 10.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice == JOptionPane.YES_OPTION){
+                    
                 }else{
+                    mp3Incorrect.play();
                     win = true;
                     egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
@@ -1268,8 +1287,9 @@ public class GameDisplay extends javax.swing.JFrame {
             }else if(id >= 10 && id <15){
                 int choice2 = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 14.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi từ 14.000.000 - 85.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice2 == JOptionPane.YES_OPTION){
-
+                    
                 }else{
+                    mp3Incorrect.play();
                     win = true;
                     egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
@@ -1279,8 +1299,9 @@ public class GameDisplay extends javax.swing.JFrame {
             }else if(id ==15){
                 int choice3 = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 14.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi 150.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice3 == JOptionPane.YES_OPTION){
-
+                    
                 }else{
+                    mp3Incorrect.play();
                     win = true;
                     egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
@@ -1289,7 +1310,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 }
             }
             else if(id > 15){
-
+                mp3Winner.play();
                 user.setMoneyBonus(getPriceById(15));
                 sb.append("XIN CHÚC MỪNG BẠN ĐÃ TRỞ THÀNH TRIỆU PHÚ!");
                 this.setVisible(false);
@@ -1303,6 +1324,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 win = true;
             }
             if(!win){
+                mp3Corect.play();
                    Question question = questions.get(id-1);
                     txtQuess.setText(question.getTitle());
                     txtQuesId.setText(id+"");
@@ -1345,6 +1367,7 @@ public class GameDisplay extends javax.swing.JFrame {
             
 
         }else {
+            mp3Incorrect.play();
             sb.append("Bạn đã trả lời sai mất rồi!\n Rất tiếc bạn phải dừng cuộc chơi ở đây!");
             if (id> 5 && id <=11) {
                 user.setMoneyBonus("1.000.000");
@@ -1406,36 +1429,19 @@ public class GameDisplay extends javax.swing.JFrame {
     private Question getNextQuestion(int id){
         return questions.get(id);
     }
-    /**
-     * @param args the command line arguments
-     */
+    
+    //audio
+    public static final String CORRECT = "C:\\Users\\LENOVO\\Desktop\\github\\Javacore-Java16\\WhoIsMilionaireGame\\src\\Audio\\corectSound.mp3";
+    public static final String INCORRECT ="C:\\Users\\LENOVO\\Desktop\\github\\Javacore-Java16\\WhoIsMilionaireGame\\src\\Audio\\failSound.mp3";
+    public static final String WINNER ="C:\\Users\\LENOVO\\Desktop\\github\\Javacore-Java16\\WhoIsMilionaireGame\\src\\Audio\\victorySound.mp3";
+    MP3Player mp3Corect = new MP3Player(new File(CORRECT));
+    MP3Player mp3Incorrect = new MP3Player(new File(INCORRECT));
+    MP3Player mp3Winner = new MP3Player(new File(WINNER));
+    
+    
     
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GameDisplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GameDisplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GameDisplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GameDisplay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GameDisplay(user).setVisible(true);
