@@ -7,15 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import run.MainRun;
 
-/**
- *
- * @author LENOVO
- */
 public class RemoveUser extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RemoveUser
-     */
     private static User user;
     public RemoveUser(User user) {
         this.user = user;

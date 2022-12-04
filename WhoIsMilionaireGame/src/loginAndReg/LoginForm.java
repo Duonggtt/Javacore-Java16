@@ -15,15 +15,8 @@ import javax.swing.JOptionPane;
 import logicHandle.ForgotPassword;
 import run.MainRun;
 
-/**
- *
- * @author LENOVO
- */
 public class LoginForm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form LoginForm
-     */
     private static User user;
     public ArrayList<User> readFromFile(User user){
         this.user = user;
