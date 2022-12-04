@@ -5,6 +5,7 @@
 package entityDisplay;
 
 import entity.Question;
+import entity.User;
 import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -18,7 +19,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import logicHandle.AddNewUser;
+import logicHandle.RemoveUser;
 import loginAndReg.LoginForm;
+import run.MainRun;
 
 /**
  *
@@ -26,7 +30,9 @@ import loginAndReg.LoginForm;
  */
 public class AdminForm extends javax.swing.JFrame {
 
-    public AdminForm() {
+    private static User user;
+    public AdminForm(User user ) {
+        this.user = user;
         initComponents();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); 
@@ -465,7 +471,8 @@ public class AdminForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
+           AddNewUser addNewUser = new AddNewUser(user);
+           addNewUser.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void txtIdQuessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdQuessActionPerformed
@@ -496,7 +503,9 @@ public class AdminForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        RemoveUser ru = new RemoveUser(user);
+        ru.setVisible(true);
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     
@@ -531,7 +540,7 @@ public class AdminForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminForm().setVisible(true);
+                new AdminForm(user).setVisible(true);
             }
         });
     }

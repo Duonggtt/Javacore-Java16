@@ -24,8 +24,12 @@ public class LoginForm extends javax.swing.JFrame {
     /**
      * Creates new form LoginForm
      */
-    public ArrayList<User> readFromFile(){
+    private static User user;
+    public ArrayList<User> readFromFile(User user){
+        this.user = user;
+        
         ArrayList<User> users = new ArrayList<>();
+        users.add(user);
         //doc file
         try{
             FileReader fr = new FileReader("Account.dat");
@@ -45,7 +49,6 @@ public class LoginForm extends javax.swing.JFrame {
             }
             
         }catch(Exception e){}
-        System.out.println(users);
         return users;
     }
     
@@ -312,7 +315,7 @@ public class LoginForm extends javax.swing.JFrame {
             txtPasswordForm.setBackground(Color.green);
         }
          
-        AdminForm adminForm = new AdminForm();
+        AdminForm adminForm = new AdminForm(user);
         boolean isCheck = false;
         for(Admin ad: MainRun.admins){
             if(username.equals(ad.getUserName()) && pass.equals(ad.getPassword())){
@@ -370,7 +373,7 @@ public class LoginForm extends javax.swing.JFrame {
     public static void main(String args[]) {
         
         LoginForm lf = new LoginForm();
-        ArrayList<User> users = lf.readFromFile();
+        ArrayList<User> users = lf.readFromFile(user);
         for(User user : users){
             System.out.println("user: " + user);
         }

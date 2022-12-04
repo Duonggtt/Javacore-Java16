@@ -22,6 +22,7 @@ public class EndGameDisplay extends javax.swing.JFrame {
      * Creates new form endGameDisplay
      */
     private static User user;
+    private String moneyString;
     public EndGameDisplay(User user) {
         this.user = user;
         initComponents();
@@ -31,6 +32,15 @@ public class EndGameDisplay extends javax.swing.JFrame {
         txtPrice.setText(user.getMoneyBonus());
         
     }
+
+    public void setMoneyString(String moneyString) {
+        this.moneyString = moneyString;
+    }
+
+    public String getMoneyString() {
+        return moneyString;
+    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

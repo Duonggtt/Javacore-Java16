@@ -271,18 +271,18 @@ public class SignUpForm extends javax.swing.JFrame {
         
         while(true){
             try{
-                if(username.equals("")){
+        if(username.equals("")){
             sb.append("Tên dăng nhập không được bỏ trống!\n");
             txtUsernameRegiserForm.setBackground(Color.red);
         }else{
             txtUsernameRegiserForm.setBackground(Color.green);
         }
         for(int i =0;i<MainRun.users.size();i++){
-            if(username.equals(MainRun.users.get(i).getUserName())){
+            if(!username.equals("") && username.equals(MainRun.users.get(i).getUserName())){
                 sb.append("Tên đăng nhập này đã tồn tại!");
                 txtUsernameRegiserForm.setBackground(Color.red);
             }else{
-                txtUsernameRegiserForm.setBackground(Color.green);
+//                txtUsernameRegiserForm.setBackground(Color.green);
             }
         }
         String regexPatternPass = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*_-]).{7,15}$";

@@ -34,7 +34,7 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "Person{" + "userName=" + userName + ", password=" + password + '}';
+        return userName + password ;
     }
     
     

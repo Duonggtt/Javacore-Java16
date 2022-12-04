@@ -6,6 +6,7 @@ import entity.Price;
 import entity.Question;
 import entity.User;
 import java.awt.Color;
+import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
@@ -887,94 +888,115 @@ public class GameDisplay extends javax.swing.JFrame {
         String op4 = txtOp4.getText();
         StringBuilder sb = new StringBuilder();
         EndGameDisplay egd = new EndGameDisplay(user);
+        boolean win =false;
             int id = Integer.parseInt(txtQuesId.getText())+1;
         if(checkAns(op4, txtOp4))
         {
             if(id >= 5 && id <10){
+                
                 int choice = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 1.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi từ 1.000.000 - 10.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice == JOptionPane.YES_OPTION){
                        
                 }else{
-                    user.setMoneyBonus(txtUserMoney.getText());
+                    win = true;
+                    egd = new EndGameDisplay(user);
+                    user.setMoneyBonus(txtMoney2.getText());
+                    System.out.println(txtMoney2.getText());
+                    this.dispose();
                     egd.setVisible(true);
-                    this.setVisible(false);
                 }
             }else if(id >= 10 && id <15){
+                
                 int choice2 = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 14.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi từ 14.000.000 - 85.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice2 == JOptionPane.YES_OPTION){
 
                 }else{
-                    sb.append("Bạn đã ra về với số tiền "+txtUserMoney.getText());
+                    win = true;
+                    egd = new EndGameDisplay(user);
+                    user.setMoneyBonus(txtMoney2.getText());
+                    this.dispose();
                     egd.setVisible(true);
-                    this.setVisible(false);
-                    user.setMoneyBonus(txtUserMoney.getText());
                 }
             }else if(id ==15){
+                
                 int choice3 = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 14.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi 150.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice3 == JOptionPane.YES_OPTION){
 
                 }else{
+                    win = true;
+                    egd = new EndGameDisplay(user);
+                    user.setMoneyBonus(txtMoney2.getText());
+                    this.dispose();
                     egd.setVisible(true);
-                    this.setVisible(false);
-                    user.setMoneyBonus(txtUserMoney.getText());
                 }
             }
             else if(id > 15){
 
+                user.setMoneyBonus(getPriceById(15));
                 sb.append("XIN CHÚC MỪNG BẠN ĐÃ TRỞ THÀNH TRIỆU PHÚ!");
-                txtUserMoney.setText(getPriceById(15));
-                user.setMoneyBonus(txtUserMoney.getText());
-                egd.setVisible(true);
                 this.setVisible(false);
+                egd = new EndGameDisplay(user);
+                egd.setVisible(true);
+                this.dispose();
                 if(sb.length()>0){
                     JOptionPane.showMessageDialog(this, sb.toString());
                     return;
                 }
-            }else {
-                
+                win = true;
             }
-            Question question = questions.get(id-1);
-            txtQuess.setText(question.getTitle());
-            txtQuesId.setText(id+"");
+            if(!win){
+                Question question = questions.get(id-1);
+                txtQuess.setText(question.getTitle());
+                txtQuesId.setText(id+"");
 
-            int ansId = Integer.parseInt(txtAns.getText())+1;
-            txtAns.setText(ansId+"");
-            txtOp3.setText("C. " + getAnsById(ansId));
+                int ansId = Integer.parseInt(txtAns.getText())+1;
+                txtAns.setText(ansId+"");
+                txtOp3.setText("C. " + getAnsById(ansId));
 
-            do{
-                Random random4 = new Random();
-                int ranId4 = random4.nextInt(answers.size())+1;
-                txtOp4.setText("D. " + getAnsById(ranId4));
-            }while (txtOp4.getText().replace("D. ", "").equals(txtOp3.getText().replace("C. ", "")));
+                do{
+                    Random random4 = new Random();
+                    int ranId4 = random4.nextInt(answers.size())+1;
+                    txtOp4.setText("D. " + getAnsById(ranId4));
+                }while (txtOp4.getText().replace("D. ", "").equals(txtOp3.getText().replace("C. ", "")));
 
-            do{
-                Random random2 = new Random();
-                int ranId2 = random2.nextInt(answers.size())+1;
-                txtOp2.setText("B. " + getAnsById(ranId2));
-            }while(txtOp2.getText().replace("B. ", "").equals(txtOp3.getText().replace("C. ", "")) || txtOp2.getText().replace("B. ", "").equals(txtOp4.getText().replace("D. ", "")) );
+                do{
+                    Random random2 = new Random();
+                    int ranId2 = random2.nextInt(answers.size())+1;
+                    txtOp2.setText("B. " + getAnsById(ranId2));
+                }while(txtOp2.getText().replace("B. ", "").equals(txtOp3.getText().replace("C. ", "")) || txtOp2.getText().replace("B. ", "").equals(txtOp4.getText().replace("D. ", "")) );
 
-            do{
-                Random random1 = new Random();
-                int ranId1 = random1.nextInt(answers.size())+1;
-                txtOp1.setText("A. " + getAnsById(ranId1));
-            }while(txtOp1.getText().replace("A. ", "").equals(txtOp2.getText().replace("B. ", "")) || txtOp1.getText().replace("A. ", "").equals(txtOp3.getText().replace("C. ", "")) || txtOp1.getText().replace("A. ", "").equals(txtOp4.getText().replace("D. ", "")));
+                do{
+                    Random random1 = new Random();
+                    int ranId1 = random1.nextInt(answers.size())+1;
+                    txtOp1.setText("A. " + getAnsById(ranId1));
+                }while(txtOp1.getText().replace("A. ", "").equals(txtOp2.getText().replace("B. ", "")) || txtOp1.getText().replace("A. ", "").equals(txtOp3.getText().replace("C. ", "")) || txtOp1.getText().replace("A. ", "").equals(txtOp4.getText().replace("D. ", "")));
 
-            txtOp1.setBackground(new Color(153,153,255));
-            txtOp2.setBackground(new Color(153,153,255));
-            txtOp3.setBackground(new Color(153,153,255));
-            txtOp4.setBackground(new Color(153,153,255));
+                txtOp1.setBackground(new Color(153,153,255));
+                txtOp2.setBackground(new Color(153,153,255));
+                txtOp3.setBackground(new Color(153,153,255));
+                txtOp4.setBackground(new Color(153,153,255));
 
-            int prId = Integer.parseInt(txtPriceId.getText())+1;
-            txtPriceId.setText(prId+"");
-            txtMoney2.setText(getPriceById(prId));
+                int prId = Integer.parseInt(txtPriceId.getText())+1;
+                txtPriceId.setText(prId+"");
+                txtMoney2.setText(getPriceById(prId));
 
-            int totalPrice = Integer.parseInt(txtPriceId.getText())-1;
-            txtUserMoney.setText(getPriceById(totalPrice));
-            user.setMoneyBonus(txtUserMoney.getText());
-
+                int totalPrice = Integer.parseInt(txtPriceId.getText())-1;
+                txtUserMoney.setText(getPriceById(totalPrice));
+                user.setMoneyBonus(txtUserMoney.getText());
+            }
+            
         }else {
             sb.append("Bạn đã trả lời sai mất rồi!\n Rất tiếc bạn phải dừng cuộc chơi ở đây!");
-             
+            if (id> 5 && id <=11) {
+                user.setMoneyBonus("1.000.000");
+            } else if (id> 11 && id <=16) {
+                user.setMoneyBonus("14.000.000");
+            }
+            egd = new EndGameDisplay(user);
+            this.setVisible(false);
+            egd.setVisible(true);
+            return;
+            
         }
         if(sb.length()>0){
             JOptionPane.showMessageDialog(this, sb.toString());
@@ -990,6 +1012,7 @@ public class GameDisplay extends javax.swing.JFrame {
         String op2 = txtOp2.getText();
         StringBuilder sb = new StringBuilder();
         EndGameDisplay egd = new EndGameDisplay(user);
+        boolean win =false;
             int id = Integer.parseInt(txtQuesId.getText())+1;
         if(checkAns(op2, txtOp2))
         {
@@ -998,42 +1021,51 @@ public class GameDisplay extends javax.swing.JFrame {
                 if(choice == JOptionPane.YES_OPTION){
 
                 }else{
-                    user.setMoneyBonus(txtUserMoney.getText());
+                    win = true;
+                    egd = new EndGameDisplay(user);
+                    user.setMoneyBonus(txtMoney2.getText());
+                    this.dispose();
                     egd.setVisible(true);
-                    this.setVisible(false);
                 }
             }else if(id >= 10 && id <15){
                 int choice2 = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 14.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi từ 14.000.000 - 85.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice2 == JOptionPane.YES_OPTION){
 
                 }else{
-                    user.setMoneyBonus(txtUserMoney.getText());
+                    win = true;
+                    egd = new EndGameDisplay(user);
+                    user.setMoneyBonus(txtMoney2.getText());
+                    this.dispose();
                     egd.setVisible(true);
-                    this.setVisible(false);
                 }
             }else if(id ==15){
                 int choice3 = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 14.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi 150.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice3 == JOptionPane.YES_OPTION){
 
                 }else{
-                    user.setMoneyBonus(txtUserMoney.getText());
+                    win = true;
+                    egd = new EndGameDisplay(user);
+                    user.setMoneyBonus(txtMoney2.getText());
+                    this.dispose();
                     egd.setVisible(true);
-                    this.setVisible(false);
                 }
             }
             else if(id > 15){
 
+                user.setMoneyBonus(getPriceById(15));
                 sb.append("XIN CHÚC MỪNG BẠN ĐÃ TRỞ THÀNH TRIỆU PHÚ!");
-                txtUserMoney.setText(getPriceById(15));
-                user.setMoneyBonus(txtUserMoney.getText());
-                egd.setVisible(true);
                 this.setVisible(false);
+                egd = new EndGameDisplay(user);
+                egd.setVisible(true);
+                this.dispose();
                 if(sb.length()>0){
                     JOptionPane.showMessageDialog(this, sb.toString());
                     return;
                 }
+                 win= true;
             }
-            Question question = questions.get(id-1);
+            if(!win){
+                Question question = questions.get(id-1);
             txtQuess.setText(question.getTitle());
             txtQuesId.setText(id+"");
 
@@ -1071,10 +1103,20 @@ public class GameDisplay extends javax.swing.JFrame {
             int totalPrice = Integer.parseInt(txtPriceId.getText())-1;
             txtUserMoney.setText(getPriceById(totalPrice));
             user.setMoneyBonus(txtUserMoney.getText());
+            }
+            
 
         }else {
             sb.append("Bạn đã trả lời sai mất rồi!\n Rất tiếc bạn phải dừng cuộc chơi ở đây!");
-            
+            if (id> 5 && id <=11) {
+                user.setMoneyBonus("1.000.000");
+            } else if (id> 11 && id <=16) {
+                user.setMoneyBonus("14.000.000");
+            }
+            egd = new EndGameDisplay(user);
+            this.setVisible(false);
+            egd.setVisible(true);
+            return;
         }
         if(sb.length()>0){
             JOptionPane.showMessageDialog(this, sb.toString());
@@ -1087,6 +1129,7 @@ public class GameDisplay extends javax.swing.JFrame {
         StringBuilder sb = new StringBuilder();
         EndGameDisplay egd = new EndGameDisplay(user);
             int id = Integer.parseInt(txtQuesId.getText())+1;
+             boolean win =false;
         if(checkAns(op3, txtOp3))
         {
             if(id >= 5 && id <10){
@@ -1094,43 +1137,52 @@ public class GameDisplay extends javax.swing.JFrame {
                 if(choice == JOptionPane.YES_OPTION){
 
                 }else{
-                    user.setMoneyBonus(txtUserMoney.getText());
+                    win = true;
+                    egd = new EndGameDisplay(user);
+                    user.setMoneyBonus(txtMoney2.getText());
+                    this.dispose();
                     egd.setVisible(true);
-                    this.setVisible(false);
                 }
             }else if(id >= 10 && id <15){
                 int choice2 = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 14.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi từ 14.000.000 - 85.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice2 == JOptionPane.YES_OPTION){
 
                 }else{
+                    win = true;
+                    egd = new EndGameDisplay(user);
+                    user.setMoneyBonus(txtMoney2.getText());
+                    this.dispose();
                     egd.setVisible(true);
-                    this.setVisible(false);
-                    user.setMoneyBonus(txtUserMoney.getText());
                 }
             }else if(id ==15){
                 int choice3 = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 14.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi 150.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice3 == JOptionPane.YES_OPTION){
 
                 }else{
+                    win = true;
+                    egd = new EndGameDisplay(user);
+                    user.setMoneyBonus(txtMoney2.getText());
+                    this.dispose();
                     egd.setVisible(true);
-                    this.setVisible(false);
-                    user.setMoneyBonus(txtUserMoney.getText());
                 }
             }
+           
             else if(id > 15){
-                System.out.println("price: " + getPriceById(15));
                 user.setMoneyBonus(getPriceById(15));
                 sb.append("XIN CHÚC MỪNG BẠN ĐÃ TRỞ THÀNH TRIỆU PHÚ!");
-                egd.setVisible(true);
                 this.setVisible(false);
-                
+                egd = new EndGameDisplay(user);
+                egd.setVisible(true);
+                this.dispose();
                 if(sb.length()>0){
                     JOptionPane.showMessageDialog(this, sb.toString());
                     return;
                 }
-                return;
+                win= true;
+                
             }
-            Question question = questions.get(id-1);
+            if(!win){
+                Question question = questions.get(id-1);
             txtQuess.setText(question.getTitle());
             txtQuesId.setText(id+"");
 
@@ -1168,10 +1220,20 @@ public class GameDisplay extends javax.swing.JFrame {
             int totalPrice = Integer.parseInt(txtPriceId.getText())-1;
             txtUserMoney.setText(getPriceById(totalPrice));
             user.setMoneyBonus(txtUserMoney.getText());
+            }
+            
         }
         else {
             sb.append("Bạn đã trả lời sai mất rồi!\n Rất tiếc bạn phải dừng cuộc chơi ở đây!");
-            
+            if (id> 5 && id <=11) {
+                user.setMoneyBonus("1.000.000");
+            } else if (id> 11 && id <=16) {
+                user.setMoneyBonus("14.000.000");
+            }
+            egd = new EndGameDisplay(user);
+            this.setVisible(false);
+            egd.setVisible(true);
+            return;
         }
 
         if(sb.length()>0){
@@ -1188,7 +1250,7 @@ public class GameDisplay extends javax.swing.JFrame {
         String op1 = txtOp1.getText();
         StringBuilder sb = new StringBuilder();
         EndGameDisplay egd = new EndGameDisplay(user);
-        
+        boolean win =false;
         int id = Integer.parseInt(txtQuesId.getText())+1;
         if(checkAns(op1, txtOp1))
         {
@@ -1196,87 +1258,102 @@ public class GameDisplay extends javax.swing.JFrame {
                 int choice = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 1.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi từ 1.000.000 - 10.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice == JOptionPane.YES_OPTION){
                 }else{
-
-                    user.setMoneyBonus(txtUserMoney.getText());
+                    win = true;
+                    egd = new EndGameDisplay(user);
+                    user.setMoneyBonus(txtMoney2.getText());
+                    this.dispose();
                     egd.setVisible(true);
-                    this.setVisible(false);
                 }
             }else if(id >= 10 && id <15){
                 int choice2 = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 14.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi từ 14.000.000 - 85.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice2 == JOptionPane.YES_OPTION){
 
                 }else{
-                    user.setMoneyBonus(txtUserMoney.getText());
+                    win = true;
+                    egd = new EndGameDisplay(user);
+                    user.setMoneyBonus(txtMoney2.getText());
+                    this.dispose();
                     egd.setVisible(true);
-                    this.setVisible(false);
                 }
             }else if(id ==15){
                 int choice3 = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 14.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi 150.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if(choice3 == JOptionPane.YES_OPTION){
 
                 }else{
-                    user.setMoneyBonus(txtUserMoney.getText());
+                    win = true;
+                    egd = new EndGameDisplay(user);
+                    user.setMoneyBonus(txtMoney2.getText());
+                    this.dispose();
                     egd.setVisible(true);
-                    this.setVisible(false);
                 }
             }
             else if(id > 15){
 
+                user.setMoneyBonus(getPriceById(15));
                 sb.append("XIN CHÚC MỪNG BẠN ĐÃ TRỞ THÀNH TRIỆU PHÚ!");
-                txtUserMoney.setText(getPriceById(15));
-                user.setMoneyBonus(txtUserMoney.getText());
-                egd.setVisible(true);
                 this.setVisible(false);
+                egd = new EndGameDisplay(user);
+                egd.setVisible(true);
+                this.dispose();
                 if(sb.length()>0){
                     JOptionPane.showMessageDialog(this, sb.toString());
                     return;
                 }
+                win = true;
             }
+            if(!win){
+                   Question question = questions.get(id-1);
+                    txtQuess.setText(question.getTitle());
+                    txtQuesId.setText(id+"");
 
-            Question question = questions.get(id-1);
-            txtQuess.setText(question.getTitle());
-            txtQuesId.setText(id+"");
+                    int ansId = Integer.parseInt(txtAns.getText())+1;
+                    txtAns.setText(ansId+"");
+                    txtOp4.setText("D. " + getAnsById(ansId));
 
-            int ansId = Integer.parseInt(txtAns.getText())+1;
-            txtAns.setText(ansId+"");
-            txtOp4.setText("D. " + getAnsById(ansId));
+                    do{
+                        Random random1 = new Random();
+                        int ranId1 = random1.nextInt(answers.size())+1;
+                        txtOp1.setText("A. " + getAnsById(ranId1));
+                    }while (txtOp1.getText().replace("A. ", "").equals(txtOp4.getText().replace("D. ", "")));
 
-            do{
-                Random random1 = new Random();
-                int ranId1 = random1.nextInt(answers.size())+1;
-                txtOp1.setText("A. " + getAnsById(ranId1));
-            }while (txtOp1.getText().replace("A. ", "").equals(txtOp4.getText().replace("D. ", "")));
+                    do{
+                        Random random2 = new Random();
+                        int ranId2 = random2.nextInt(answers.size())+1;
+                        txtOp2.setText("B. " + getAnsById(ranId2));
+                    }while(txtOp2.getText().replace("B. ", "").equals(txtOp1.getText().replace("A. ", "")) || txtOp2.getText().replace("B. ", "").equals(txtOp4.getText().replace("D. ", "")) );
 
-            do{
-                Random random2 = new Random();
-                int ranId2 = random2.nextInt(answers.size())+1;
-                txtOp2.setText("B. " + getAnsById(ranId2));
-            }while(txtOp2.getText().replace("B. ", "").equals(txtOp1.getText().replace("A. ", "")) || txtOp2.getText().replace("B. ", "").equals(txtOp4.getText().replace("D. ", "")) );
+                    do{
+                        Random random3 = new Random();
+                        int ranId3 = random3.nextInt(answers.size())+1;
+                        txtOp3.setText("C. " + getAnsById(ranId3));
+                    }while(txtOp3.getText().replace("C. ", "").equals(txtOp1.getText().replace("A. ", "")) || txtOp3.getText().replace("C. ", "").equals(txtOp2.getText().replace("B. ", "")) || txtOp3.getText().replace("C. ", "").equals(txtOp4.getText().replace("D. ", "")));
 
-            do{
-                Random random3 = new Random();
-                int ranId3 = random3.nextInt(answers.size())+1;
-                txtOp3.setText("C. " + getAnsById(ranId3));
-            }while(txtOp3.getText().replace("C. ", "").equals(txtOp1.getText().replace("A. ", "")) || txtOp3.getText().replace("C. ", "").equals(txtOp2.getText().replace("B. ", "")) || txtOp3.getText().replace("C. ", "").equals(txtOp4.getText().replace("D. ", "")));
+                    txtOp1.setBackground(new Color(153,153,255));
+                    txtOp2.setBackground(new Color(153,153,255));
+                    txtOp3.setBackground(new Color(153,153,255));
+                    txtOp4.setBackground(new Color(153,153,255));
 
-            txtOp1.setBackground(new Color(153,153,255));
-            txtOp2.setBackground(new Color(153,153,255));
-            txtOp3.setBackground(new Color(153,153,255));
-            txtOp4.setBackground(new Color(153,153,255));
+                    int prId = Integer.parseInt(txtPriceId.getText())+1;
+                    txtPriceId.setText(prId+"");
+                    txtMoney2.setText(getPriceById(prId));
 
-            try{
-                int prId = Integer.parseInt(txtPriceId.getText())+1;
-                txtPriceId.setText(prId+"");
-                txtMoney2.setText(getPriceById(prId));
-
-                int totalPrice = Integer.parseInt(txtPriceId.getText())-1;
-                txtUserMoney.setText(getPriceById(totalPrice));
-                user.setMoneyBonus(txtUserMoney.getText());
-            }catch(Exception e){}
+                    int totalPrice = Integer.parseInt(txtPriceId.getText())-1;
+                    txtUserMoney.setText(getPriceById(totalPrice));
+                    user.setMoneyBonus(txtUserMoney.getText());
+            }
+            
 
         }else {
             sb.append("Bạn đã trả lời sai mất rồi!\n Rất tiếc bạn phải dừng cuộc chơi ở đây!");
-            
+            if (id> 5 && id <=11) {
+                user.setMoneyBonus("1.000.000");
+            } else if (id> 11 && id <=16) {
+                user.setMoneyBonus("14.000.000");
+            }
+            egd = new EndGameDisplay(user);
+            this.setVisible(false);
+            egd.setVisible(true);
+            return;
         }
         if(sb.length()>0){
             JOptionPane.showMessageDialog(this, sb.toString());
@@ -1286,7 +1363,6 @@ public class GameDisplay extends javax.swing.JFrame {
     private boolean checkHelpAns(String ans, JTextField textField){
         ans=ans.replace("A. ", "").replace("B. ", "").replace("C. ", "").replace("D. ", "");
         
-        EndGameDisplay egd = new EndGameDisplay(user);
         if(ans.equals(getAnsById(Integer.parseInt(txtAns.getText())))){
             Question q = new Question();
             Answer a = new Answer();
@@ -1318,14 +1394,12 @@ public class GameDisplay extends javax.swing.JFrame {
         
         EndGameDisplay egd = new EndGameDisplay(user);
         if(ans.equals(getAnsById(Integer.parseInt(txtAns.getText())))){
-            textField.setBackground(Color.GREEN);
+            textField.setBackground(Color.BLUE);
             Question q = new Question();
             Answer a = new Answer();
             return true;
         }
         textField.setBackground(Color.red);
-            egd.setVisible(true);
-            this.setVisible(false);
         return false;
     }
     private Question getNextQuestion(int id){

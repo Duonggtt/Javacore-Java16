@@ -29,8 +29,6 @@ public class User extends Person{
         this.email = email;
     }
     
-    
-
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
@@ -43,7 +41,7 @@ public class User extends Person{
     public void setEmail(String email) {
         this.email = email;
     }
-
+    
     @Override
     public void setPassword(String password) {
         super.setPassword(password);
@@ -67,13 +65,15 @@ public class User extends Person{
     
     @Override
     public void login() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
+    
+    
 
     @Override
     public String toString() {
-        return userName+ "\t" + password + "\t" + email;
+        return super.userName + "\t" + super.password+ "\t" + email ;
     }
-    
+
     
 }
