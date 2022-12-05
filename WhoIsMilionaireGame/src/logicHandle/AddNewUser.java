@@ -9,8 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import loginAndReg.LoginForm;
 import run.MainRun;
+import service.IService;
 
-public class AddNewUser extends javax.swing.JFrame {
+// ở đây T chính là User
+public class AddNewUser extends javax.swing.JFrame implements IService<User>{
 
     private static User user ;
     public AddNewUser(User user) {
@@ -210,10 +212,8 @@ public class AddNewUser extends javax.swing.JFrame {
                     txtAddPassword.setBackground(Color.red);
                     txtAddUserName.setBackground(Color.red);
                 }else if(!username.equals("") && !password.equals("") && !username.equals(MainRun.users.get(i).getUserName())){
-                    User u = new User();
-                    u.setUserName(username);
-                    u.setPassword(password);
-                    MainRun.users.add(u);
+                    //insertObject() hàm này trả về 1 user
+                    MainRun.users.add(insertObject());
                     
                     //ghi file
                     try{
@@ -273,4 +273,12 @@ public class AddNewUser extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtAddPassword;
     private javax.swing.JTextField txtAddUserName;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public User insertObject() {
+        User u = new User();
+        u.setUserName(txtAddUserName.getText());
+        u.setPassword(txtAddPassword.getText());
+        return u;
+    }
 }

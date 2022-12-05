@@ -12,8 +12,9 @@ import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import run.MainRun;
+import service.IService;
 
-public class SignUpForm extends javax.swing.JFrame {
+public class SignUpForm extends javax.swing.JFrame implements IService<User>{
 
     public SignUpForm() {
         initComponents();
@@ -331,10 +332,7 @@ public class SignUpForm extends javax.swing.JFrame {
         txtPasswordRegisterForm.setBackground(Color.green);
         txtEmailRegisterForm.setBackground(Color.green);
         
-        user.setUserName(username);
-        user.setPassword(password);
-        user.setEmail(email);
-        MainRun.users.add(user);
+        MainRun.users.add(insertObject());
         
         try{
             FileWriter fw = new FileWriter("Account.dat",true);
@@ -417,4 +415,13 @@ public class SignUpForm extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtRePasswordRegisterForm;
     private javax.swing.JTextField txtUsernameRegiserForm;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public User insertObject() {
+        User user = new User();
+        user.setUserName(txtUsernameRegiserForm.getText());
+        user.setPassword(txtPasswordRegisterForm.getText());
+        user.setEmail(txtEmailRegisterForm.getText());
+        return user;
+    }
 }
