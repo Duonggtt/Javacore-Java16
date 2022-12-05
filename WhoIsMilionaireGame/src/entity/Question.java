@@ -1,17 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author LENOVO
- */
 public class Question implements Serializable{
     private int id ;
     private int AUTO_ID = 0;

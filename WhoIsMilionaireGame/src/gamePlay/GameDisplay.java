@@ -800,9 +800,9 @@ public class GameDisplay extends javax.swing.JFrame {
                     .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(40, 40, 40))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(46, 46, 46)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -994,7 +994,7 @@ public class GameDisplay extends javax.swing.JFrame {
         }else {
             mp3Incorrect.play();
             sb.append("Bạn đã trả lời sai mất rồi!\n Rất tiếc bạn phải dừng cuộc chơi ở đây!");
-            if (id> 5 && id <=11) {
+            if (id> 6 && id <=11) {
                 user.setMoneyBonus("1.000.000");
             } else if (id> 11 && id <=16) {
                 user.setMoneyBonus("14.000.000");
@@ -1120,7 +1120,7 @@ public class GameDisplay extends javax.swing.JFrame {
         }else {
             mp3Incorrect.play();
             sb.append("Bạn đã trả lời sai mất rồi!\n Rất tiếc bạn phải dừng cuộc chơi ở đây!");
-            if (id> 5 && id <=11) {
+            if (id> 6 && id <=11) {
                 user.setMoneyBonus("1.000.000");
             } else if (id> 11 && id <=16) {
                 user.setMoneyBonus("14.000.000");
@@ -1243,7 +1243,7 @@ public class GameDisplay extends javax.swing.JFrame {
         else {
             mp3Incorrect.play();
             sb.append("Bạn đã trả lời sai mất rồi!\n Rất tiếc bạn phải dừng cuộc chơi ở đây!");
-            if (id> 5 && id <=11) {
+            if (id> 1 && id <=11) {
                 user.setMoneyBonus("1.000.000");
             } else if (id> 11 && id <=16) {
                 user.setMoneyBonus("14.000.000");
@@ -1369,7 +1369,7 @@ public class GameDisplay extends javax.swing.JFrame {
         }else {
             mp3Incorrect.play();
             sb.append("Bạn đã trả lời sai mất rồi!\n Rất tiếc bạn phải dừng cuộc chơi ở đây!");
-            if (id> 5 && id <=11) {
+            if (id> 6 && id <=11) {
                 user.setMoneyBonus("1.000.000");
             } else if (id> 11 && id <=16) {
                 user.setMoneyBonus("14.000.000");
