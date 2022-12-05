@@ -887,7 +887,7 @@ public class GameDisplay extends javax.swing.JFrame {
     private void txtOp4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtOp4MouseClicked
         String op4 = txtOp4.getText();
         StringBuilder sb = new StringBuilder();
-        EndGameDisplay egd = new EndGameDisplay(user);
+//        EndGameDisplay egd = new EndGameDisplay(user);
         boolean win =false;
             int id = Integer.parseInt(txtQuesId.getText())+1;
         if(checkAns(op4, txtOp4))
@@ -901,7 +901,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 }else{
                     mp3Incorrect.play();
                     win = true;
-                    egd = new EndGameDisplay(user);
+                    EndGameDisplay egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
                     System.out.println(txtMoney2.getText());
                     this.dispose();
@@ -916,7 +916,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 }else{
                     mp3Incorrect.play();
                     win = true;
-                    egd = new EndGameDisplay(user);
+                    EndGameDisplay egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
                     this.dispose();
                     egd.setVisible(true);
@@ -930,7 +930,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 }else{
                     mp3Incorrect.play();
                     win = true;
-                    egd = new EndGameDisplay(user);
+                    EndGameDisplay egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
                     this.dispose();
                     egd.setVisible(true);
@@ -942,7 +942,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 user.setMoneyBonus(getPriceById(15));
                 sb.append("XIN CHÚC MỪNG BẠN ĐÃ TRỞ THÀNH TRIỆU PHÚ!");
                 this.setVisible(false);
-                egd = new EndGameDisplay(user);
+                EndGameDisplay egd = new EndGameDisplay(user);
                 egd.setVisible(true);
                 this.dispose();
                 if(sb.length()>0){
@@ -1004,7 +1004,7 @@ public class GameDisplay extends javax.swing.JFrame {
             } else if (id> 11 && id <=16) {
                 user.setMoneyBonus("14.000.000");
             }
-            egd = new EndGameDisplay(user);
+            EndGameDisplay egd = new EndGameDisplay(user);
             this.setVisible(false);
             egd.setVisible(true);
             return;
@@ -1023,7 +1023,7 @@ public class GameDisplay extends javax.swing.JFrame {
     private void txtOp2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtOp2MouseClicked
         String op2 = txtOp2.getText();
         StringBuilder sb = new StringBuilder();
-        EndGameDisplay egd = new EndGameDisplay(user);
+//        EndGameDisplay egd = new EndGameDisplay(user);
         boolean win =false;
             int id = Integer.parseInt(txtQuesId.getText())+1;
         if(checkAns(op2, txtOp2))
@@ -1035,7 +1035,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 }else{
                     mp3Incorrect.play();
                     win = true;
-                    egd = new EndGameDisplay(user);
+                    EndGameDisplay egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
                     this.dispose();
                     egd.setVisible(true);
@@ -1047,7 +1047,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 }else{
                     mp3Incorrect.play();
                     win = true;
-                    egd = new EndGameDisplay(user);
+                    EndGameDisplay egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
                     this.dispose();
                     egd.setVisible(true);
@@ -1059,7 +1059,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 }else{
                     mp3Incorrect.play();
                     win = true;
-                    egd = new EndGameDisplay(user);
+                    EndGameDisplay egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
                     this.dispose();
                     egd.setVisible(true);
@@ -1070,7 +1070,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 user.setMoneyBonus(getPriceById(15));
                 sb.append("XIN CHÚC MỪNG BẠN ĐÃ TRỞ THÀNH TRIỆU PHÚ!");
                 this.setVisible(false);
-                egd = new EndGameDisplay(user);
+                EndGameDisplay egd = new EndGameDisplay(user);
                 egd.setVisible(true);
                 this.dispose();
                 if(sb.length()>0){
@@ -1130,7 +1130,7 @@ public class GameDisplay extends javax.swing.JFrame {
             } else if (id> 11 && id <=16) {
                 user.setMoneyBonus("14.000.000");
             }
-            egd = new EndGameDisplay(user);
+            EndGameDisplay egd = new EndGameDisplay(user);
             this.setVisible(false);
             egd.setVisible(true);
             return;
@@ -1144,7 +1144,7 @@ public class GameDisplay extends javax.swing.JFrame {
     private void txtOp3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtOp3MouseClicked
         String op3 = txtOp3.getText();
         StringBuilder sb = new StringBuilder();
-        EndGameDisplay egd = new EndGameDisplay(user);
+//        EndGameDisplay egd = new EndGameDisplay(user);
             int id = Integer.parseInt(txtQuesId.getText())+1;
              boolean win =false;
         if(checkAns(op3, txtOp3))
@@ -1156,7 +1156,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 }else{
                     mp3Incorrect.play();
                     win = true;
-                    egd = new EndGameDisplay(user);
+                    EndGameDisplay egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
                     this.dispose();
                     egd.setVisible(true);
@@ -1168,7 +1168,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 }else{
                     mp3Incorrect.play();
                     win = true;
-                    egd = new EndGameDisplay(user);
+                    EndGameDisplay egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
                     this.dispose();
                     egd.setVisible(true);
@@ -1180,7 +1180,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 }else{
                     mp3Incorrect.play();
                     win = true;
-                    egd = new EndGameDisplay(user);
+                    EndGameDisplay egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
                     this.dispose();
                     egd.setVisible(true);
@@ -1192,7 +1192,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 user.setMoneyBonus(getPriceById(15));
                 sb.append("XIN CHÚC MỪNG BẠN ĐÃ TRỞ THÀNH TRIỆU PHÚ!");
                 this.setVisible(false);
-                egd = new EndGameDisplay(user);
+                EndGameDisplay egd = new EndGameDisplay(user);
                 egd.setVisible(true);
                 this.dispose();
                 if(sb.length()>0){
@@ -1253,7 +1253,7 @@ public class GameDisplay extends javax.swing.JFrame {
             } else if (id> 11 && id <=16) {
                 user.setMoneyBonus("14.000.000");
             }
-            egd = new EndGameDisplay(user);
+            EndGameDisplay egd = new EndGameDisplay(user);
             this.setVisible(false);
             egd.setVisible(true);
             return;
@@ -1272,7 +1272,7 @@ public class GameDisplay extends javax.swing.JFrame {
     private void txtOp1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtOp1MouseClicked
         String op1 = txtOp1.getText();
         StringBuilder sb = new StringBuilder();
-        EndGameDisplay egd = new EndGameDisplay(user);
+//        EndGameDisplay egd = new EndGameDisplay(user);
         boolean win =false;
         int id = Integer.parseInt(txtQuesId.getText())+1;
         if(checkAns(op1, txtOp1))
@@ -1284,7 +1284,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 }else{
                     mp3Incorrect.play();
                     win = true;
-                    egd = new EndGameDisplay(user);
+                    EndGameDisplay egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
                     this.dispose();
                     egd.setVisible(true);
@@ -1296,7 +1296,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 }else{
                     mp3Incorrect.play();
                     win = true;
-                    egd = new EndGameDisplay(user);
+                    EndGameDisplay egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
                     this.dispose();
                     egd.setVisible(true);
@@ -1308,7 +1308,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 }else{
                     mp3Incorrect.play();
                     win = true;
-                    egd = new EndGameDisplay(user);
+                    EndGameDisplay egd = new EndGameDisplay(user);
                     user.setMoneyBonus(txtMoney2.getText());
                     this.dispose();
                     egd.setVisible(true);
@@ -1319,7 +1319,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 user.setMoneyBonus(getPriceById(15));
                 sb.append("XIN CHÚC MỪNG BẠN ĐÃ TRỞ THÀNH TRIỆU PHÚ!");
                 this.setVisible(false);
-                egd = new EndGameDisplay(user);
+                EndGameDisplay egd = new EndGameDisplay(user);
                 egd.setVisible(true);
                 this.dispose();
                 if(sb.length()>0){
@@ -1379,7 +1379,7 @@ public class GameDisplay extends javax.swing.JFrame {
             } else if (id> 11 && id <=16) {
                 user.setMoneyBonus("14.000.000");
             }
-            egd = new EndGameDisplay(user);
+            EndGameDisplay egd = new EndGameDisplay(user);
             this.setVisible(false);
             egd.setVisible(true);
             return;
