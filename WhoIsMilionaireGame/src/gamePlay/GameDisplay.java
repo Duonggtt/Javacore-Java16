@@ -838,7 +838,7 @@ public class GameDisplay extends javax.swing.JFrame {
         }else {
             sb.append("Người bạn gọi bảo bạn tự làm :V");
         }
-        helpBtn2.setVisible(false);
+        helpBtn2.setEnabled(false);
         if(sb.length()>0){
             JOptionPane.showMessageDialog(this, sb.toString());
             return;
@@ -869,7 +869,7 @@ public class GameDisplay extends javax.swing.JFrame {
             txtOp3.setText("");
             txtOp4.setText("");
         }
-        helpBtn1.setVisible(false);
+        helpBtn1.setEnabled(false);
         if(sb.length()>0){
             JOptionPane.showMessageDialog(this, sb.toString());
             return;
