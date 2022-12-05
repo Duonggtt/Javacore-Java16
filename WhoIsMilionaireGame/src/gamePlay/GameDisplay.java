@@ -57,7 +57,7 @@ public class GameDisplay extends javax.swing.JFrame {
         Question q2 = new Question(" Nội dung nào sau đây không có trong\n hội nghị thành lập Đảng?","history",2);
         Question q3= new Question(" Thắng lợi quân sự nào của quân dân ta\n trong cuộc kháng chiến chống Pháp có ý nghĩa bước ngoặt mở đầu\n giai đoạn quân ta giành quyền chủ động chiến lược trên chiến trường chính?","history" ,3);
         Question q4= new Question(" Chọn từ phù hợp điền vào chỗ trống: \nNhằm giải quyết khó khăn về..............., chính phủ kêu gọi tinh thần\n tự nguyện đóng góp của nhân dân. Hưởng ứng “quỹ độc lập”,\nphong trào “Tuần lễ vàng” do chính phủ phát động.\n Đến ngày 23-11-1946, Quốc hội quyết định cho lưu hành tiền Việt Nam trong cả nước. ","history" ,4);
-        Question q5= new Question(" Sự linh hoạt trong chính sách ngoại giao\n của Đảng giai đoạn 1945-1946 được thể hiện ở:","history" ,5);
+        Question q5= new Question(" Sự linh hoạt trong chính sách ngoại giao\n của Đảng giai đoạn 1945-1946 được thể hiện ở?","history" ,5);
         Question q6= new Question(" Sách lược của Đảng từ ngày 6/3/1946\n có điểm gì khác so với giai đoạn trước đó?","history" ,6);
         Question q7= new Question(" Sự kiện nào sau đây là  quan trọng nhất\n trong việc củng cố và kiện toàn chính quyền cách mạng","history" ,7);
         Question q8= new Question(" Yếu tố nào sau đây không nằm trong tác dụng\n của Hiệp định Sơ Bộ (6/3/1946) ","history" ,8);
@@ -887,9 +887,8 @@ public class GameDisplay extends javax.swing.JFrame {
     private void txtOp4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtOp4MouseClicked
         String op4 = txtOp4.getText();
         StringBuilder sb = new StringBuilder();
-//        EndGameDisplay egd = new EndGameDisplay(user);
         boolean win =false;
-            int id = Integer.parseInt(txtQuesId.getText())+1;
+        int id = Integer.parseInt(txtQuesId.getText())+1;
         if(checkAns(op4, txtOp4))
         {
             //mốc 5-10
