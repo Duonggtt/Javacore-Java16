@@ -27,6 +27,7 @@ public class AdminForm extends javax.swing.JFrame {
     public AdminForm(User user ) {
         this.user = user;
         initComponents();
+        //cố dịnh giao diện ở giữa màn hình
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); 
     }
@@ -391,14 +392,15 @@ public class AdminForm extends javax.swing.JFrame {
         String quessId = txtIdQuess.getText();
         String ansId = txtIdAnse.getText();
         Question question = new Question();
+        //lấy ra giá trị ở các ô text field
         String op1 = txtOp1.getText();
         String op2 = txtOp2.getText();
         String op3 = txtOp3.getText();
         String op4 = txtOp4.getText();
         String result = txtAnswer.getText();
         
-        
-            if(newQues.equals("")){
+        //check giá trị ở các ô text field
+        if(newQues.equals("")){
             sb.append("Câu hỏi không được để trống!");
             txtNewQ.setBackground(Color.red);
         }else {
@@ -427,6 +429,7 @@ public class AdminForm extends javax.swing.JFrame {
         ArrayList<Question> questions = new ArrayList<>();
         
         questions.add(question);
+        
 //        Ghi file
         try{
             FileWriter fw = new FileWriter("Question.dat",true);
@@ -438,6 +441,7 @@ public class AdminForm extends javax.swing.JFrame {
             fw.close();
             
         }catch(Exception e){}
+        //sau khí lưu thành công thì set lại giá trị mặc định cho text field
         
         sb.append("Lưu câu hỏi thành công!");
         txtNewQ.setText("CAU HOI: ");

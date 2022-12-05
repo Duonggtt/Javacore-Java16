@@ -14,6 +14,7 @@ public class UserForm extends javax.swing.JFrame {
     public UserForm( User user) {
         this.user = user;
         initComponents();
+        //cố dịnh giao diện ở giữa màn hình
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); 
         

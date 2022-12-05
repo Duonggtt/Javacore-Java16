@@ -37,11 +37,6 @@ import javax.sound.sampled.*;
  */
 public class GameDisplay extends javax.swing.JFrame {
 
-    /**
-     * Creates new form gameDisplay
-     */
-    
-    
     ArrayList<Question> questions;
     ArrayList<Answer> answers;
     ArrayList<Price> prices;
@@ -110,6 +105,7 @@ public class GameDisplay extends javax.swing.JFrame {
         Price pr15 = new Price("150.000.000", 15);
         prices = new ArrayList<>(Arrays.asList(pr1,pr2,pr3,pr4,pr5,pr6,pr7,pr8,pr9,pr10,pr11,pr12,pr13,pr14,pr15));
        
+        //set câu hỏi và đáp án mặc định ban đầu
         for(int i =0;i<questions.size();i++){
             txtQuesId.setText(questions.get(i).getId()+ "");
             txtQuess.setText(questions.get(i).getTitle());
@@ -125,6 +121,7 @@ public class GameDisplay extends javax.swing.JFrame {
         
         txtUserName2.setText(user.getUserName());
         
+        //random 3 ô chọn còn lại 
             do{   
                 Random random2 = new Random();
                 int ranId2 = random2.nextInt(answers.size())+1;
@@ -826,6 +823,7 @@ public class GameDisplay extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPriceIdActionPerformed
 
     private void helpBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtn2ActionPerformed
+        //trợ giúp gọi điện cho người thân
         StringBuilder sb = new StringBuilder();
         Random random = new Random();
         int ranId = random.nextInt(answers.size())+1;
@@ -850,7 +848,7 @@ public class GameDisplay extends javax.swing.JFrame {
     private void helpBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtn1ActionPerformed
 
         StringBuilder sb = new StringBuilder();
-
+        //trợ giúp hỏi ý kiến khán giả
         if(!checkHelpAns(txtOp1.getText(), txtOp1) && !checkHelpAns(txtOp2.getText(), txtOp2)){
             txtOp1.setText("");
             txtOp2.setText("");
@@ -894,6 +892,7 @@ public class GameDisplay extends javax.swing.JFrame {
             int id = Integer.parseInt(txtQuesId.getText())+1;
         if(checkAns(op4, txtOp4))
         {
+            //mốc 5-10
             if(id >= 5 && id <10){
                 
                 int choice = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 1.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi từ 1.000.000 - 10.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -908,6 +907,7 @@ public class GameDisplay extends javax.swing.JFrame {
                     this.dispose();
                     egd.setVisible(true);
                 }
+                //mốc 10-15
             }else if(id >= 10 && id <15){
                 
                 int choice2 = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 14.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi từ 14.000.000 - 85.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -921,6 +921,7 @@ public class GameDisplay extends javax.swing.JFrame {
                     this.dispose();
                     egd.setVisible(true);
                 }
+                //mốc thứ 15
             }else if(id ==15){
                 
                 int choice3 = JOptionPane.showConfirmDialog(this, "Nếu trả lời sai bạn sẽ phải ra về với 14.000.000 \n nếu bạn lựa chọn dừng cuộc chơi thì số tiền thưởng hiện tại bạn đang có sẽ là của bạn?\n bạn có muốn tiếp tục không", "Mốc câu hỏi 150.000.000!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -935,6 +936,7 @@ public class GameDisplay extends javax.swing.JFrame {
                     egd.setVisible(true);
                 }
             }
+            //hoàn thành 15 câu
             else if(id > 15){
                 mp3Winner.play();
                 user.setMoneyBonus(getPriceById(15));
@@ -950,6 +952,7 @@ public class GameDisplay extends javax.swing.JFrame {
                 win = true;
             }
             if(!win){
+                //nếu chọn đúng thì nhảy câu hỏi và random answer 
                 mp3Corect.play();
                 Question question = questions.get(id-1);
                 txtQuess.setText(question.getTitle());
@@ -976,7 +979,8 @@ public class GameDisplay extends javax.swing.JFrame {
                     int ranId1 = random1.nextInt(answers.size())+1;
                     txtOp1.setText("A. " + getAnsById(ranId1));
                 }while(txtOp1.getText().replace("A. ", "").equals(txtOp2.getText().replace("B. ", "")) || txtOp1.getText().replace("A. ", "").equals(txtOp3.getText().replace("C. ", "")) || txtOp1.getText().replace("A. ", "").equals(txtOp4.getText().replace("D. ", "")));
-
+                
+                //set lại giá trị màu cho textfiled
                 txtOp1.setBackground(new Color(153,153,255));
                 txtOp2.setBackground(new Color(153,153,255));
                 txtOp3.setBackground(new Color(153,153,255));
@@ -992,6 +996,7 @@ public class GameDisplay extends javax.swing.JFrame {
             }
             
         }else {
+            //nếu trả lời sai theo mốc
             mp3Incorrect.play();
             sb.append("Bạn đã trả lời sai mất rồi!\n Rất tiếc bạn phải dừng cuộc chơi ở đây!");
             if (id> 6 && id <=11) {
@@ -1430,7 +1435,7 @@ public class GameDisplay extends javax.swing.JFrame {
         return questions.get(id);
     }
     
-    //audio
+    // sound âm thanh cho game
     public static final String CORRECT = "C:\\Users\\LENOVO\\Desktop\\github\\Javacore-Java16\\WhoIsMilionaireGame\\src\\Audio\\corectSound.mp3";
     public static final String INCORRECT ="C:\\Users\\LENOVO\\Desktop\\github\\Javacore-Java16\\WhoIsMilionaireGame\\src\\Audio\\failSound.mp3";
     public static final String WINNER ="C:\\Users\\LENOVO\\Desktop\\github\\Javacore-Java16\\WhoIsMilionaireGame\\src\\Audio\\victorySound.mp3";
@@ -1443,6 +1448,7 @@ public class GameDisplay extends javax.swing.JFrame {
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new GameDisplay(user).setVisible(true);
                 GameDisplay gameDisplay = new GameDisplay(user);

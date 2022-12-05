@@ -8,6 +8,7 @@ public class HomeMenu extends javax.swing.JFrame {
 
     public HomeMenu() {
         initComponents();
+        //cố định giao diện ở giữa màn hình
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); 
     }
