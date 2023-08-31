@@ -65,7 +65,7 @@ public class UserServiceImpl implements UserService {
                 return mapToDto(user);
             }
         }
-        throw new ResouceNotFoundException("");
+        throw new ResouceNotFoundException("Not found user");
     }
 
     @Override
@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService {
                 return user.getAvatar();
             }
         }
-        throw new ResouceNotFoundException("");
+        throw new ResouceNotFoundException("Not found user");
     }
 
     @Override
@@ -93,7 +93,7 @@ public class UserServiceImpl implements UserService {
                 return true;
             }
         }
-        throw new IncorrectPasswordException("");
+        throw new IncorrectPasswordException("Not found password");
     }
 
     private int createId() {
@@ -120,7 +120,7 @@ public class UserServiceImpl implements UserService {
                 return user.getPassword();
             }
         }
-        throw new ResouceNotFoundException("");
+        throw new ResouceNotFoundException("Not found user");
     }
 
 
