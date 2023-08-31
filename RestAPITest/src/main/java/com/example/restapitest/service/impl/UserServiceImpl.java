@@ -3,6 +3,7 @@ package com.example.restapitest.service.impl;
 import com.example.restapitest.DAO.UserDao;
 import com.example.restapitest.db.UserDb;
 import com.example.restapitest.dto.UserDto;
+import com.example.restapitest.exception.IncorrectPasswordException;
 import com.example.restapitest.exception.ResouceNotFoundException;
 import com.example.restapitest.model.User;
 import com.example.restapitest.request.InsertUserRequest;
@@ -64,7 +65,7 @@ public class UserServiceImpl implements UserService {
                 return mapToDto(user);
             }
         }
-        return null;
+        throw new ResouceNotFoundException("");
     }
 
     @Override
@@ -75,7 +76,7 @@ public class UserServiceImpl implements UserService {
                 return user.getAvatar();
             }
         }
-        return null;
+        throw new ResouceNotFoundException("");
     }
 
     @Override
@@ -92,7 +93,7 @@ public class UserServiceImpl implements UserService {
                 return true;
             }
         }
-        return false;
+        throw new IncorrectPasswordException("");
     }
 
     private int createId() {
@@ -119,7 +120,7 @@ public class UserServiceImpl implements UserService {
                 return user.getPassword();
             }
         }
-        return null;
+        throw new ResouceNotFoundException("");
     }
 
 
