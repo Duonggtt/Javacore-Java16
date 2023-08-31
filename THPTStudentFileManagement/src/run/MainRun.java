@@ -5,6 +5,7 @@ import entity.Student;
 import logicHandle.schoolLogicHandle;
 import logicHandle.studentLogicHandle;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ public class MainRun {
     public static ArrayList<School> schools = new ArrayList<>();
     public static int studentCount = 0;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         while(true) {
             showMenu();
             int functionChoice = functionHandle();
@@ -22,7 +23,7 @@ public class MainRun {
 
     }
 
-    private static void functionChoose(int functionChoice) {
+    private static void functionChoose(int functionChoice) throws ParseException {
         switch (functionChoice) {
             case 1:
                 studentLogicHandle.addStudent();

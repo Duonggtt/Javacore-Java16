@@ -34,6 +34,7 @@ public class Teacher extends Person {
         this.level = level;
     }
 
+
     @Override
     public String toString() {
         return "Teacher{" +
