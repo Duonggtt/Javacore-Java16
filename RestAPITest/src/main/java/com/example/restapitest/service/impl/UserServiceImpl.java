@@ -10,6 +10,7 @@ import com.example.restapitest.request.UpdateAvatarRequest;
 import com.example.restapitest.request.UpdatePasswordRequest;
 import com.example.restapitest.request.UpdateUserRequest;
 import com.example.restapitest.service.UserService;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -120,6 +121,7 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
 
     private UserDto mapToDto(User user) {
         user = userDao.findById(user.getId())

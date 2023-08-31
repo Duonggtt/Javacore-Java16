@@ -5,8 +5,10 @@ import com.example.restapitest.model.User;
 import com.example.restapitest.request.UpdatePasswordRequest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
+import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -36,4 +38,6 @@ public class UserDaoImpl implements UserDao{
                 .filter(user -> user.getName().contains(name))
                 .collect(Collectors.toList());
     }
+
+
 }
