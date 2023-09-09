@@ -1,7 +1,6 @@
 package com.example.restapitest.controller;
 
 import com.example.restapitest.dto.UserDto;
-import com.example.restapitest.model.User;
 import com.example.restapitest.request.InsertUserRequest;
 import com.example.restapitest.request.UpdateAvatarRequest;
 import com.example.restapitest.request.UpdatePasswordRequest;
