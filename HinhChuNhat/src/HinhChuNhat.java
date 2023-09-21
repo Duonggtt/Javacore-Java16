@@ -1,19 +1,52 @@
 import java.util.Scanner;
 
 public class HinhChuNhat {
-    public static void main(String[] args) {
-        System.out.println("Nhap canh a: ");
-        float a = new Scanner(System.in).nextFloat();
+    private float chieuDai;
+    private float chieuRong;
 
-        System.out.println("Nhap canh b: ");
-        float b = new Scanner(System.in).nextFloat();
-        caculator(a,b);
+
+    public float getChieuDai() {
+        return chieuDai;
     }
 
-    public static void caculator(float a, float b) {
-        float chuvi = (a + b) / 2;
-        float dientich = a * b;
-        System.out.println("Dien tich la: " + dientich);
-        System.out.println("Chu vi la: " + chuvi);
+    public void setChieuDai(float chieuDai) {
+        this.chieuDai = chieuDai;
+    }
+
+    public float getChieuRong() {
+        return chieuRong;
+    }
+
+    public void setChieuRong(float chieuRong) {
+        this.chieuRong = chieuRong;
+    }
+
+    @Override
+    public String toString() {
+        return "HinhChuNhat{" +
+                "chieuDai=" + chieuDai +
+                ", chieuRong=" + chieuRong +
+                '}';
+    }
+
+    void Nhap() {
+        System.out.println("Nhap chieu dai: ");
+        this.chieuDai = new Scanner(System.in).nextFloat();
+        System.out.println("Nhap chieu rong: ");
+        this.chieuRong = new Scanner(System.in).nextFloat();
+
+    }
+
+    double TinhChuVi() {
+       return (this.chieuDai + this.chieuRong) * 2;
+    }
+
+    double TinhDienTich() {
+        return this.chieuDai * this.chieuRong;
+    }
+
+    void InKQ() {
+        System.out.println("Dien tich là: " + TinhDienTich());
+        System.out.println("Chu vi là: " + TinhChuVi());
     }
 }

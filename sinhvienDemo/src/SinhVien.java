@@ -101,9 +101,40 @@ public class SinhVien {
         return (sv.getDiemNam1() + sv.getDiemNam2() + sv.getDiemNam3() + sv.getDiemNam4()) / 4;
     }
 
+    void ratingScore(SinhVien sv) {
+        float gpa = scoreCaculate(sv);
+        if(gpa > 10) {
+            System.out.println("Diem co sai sot khi nhap!");
+            return;
+        }
+        if(gpa > 9 && gpa < 10) {
+            System.out.println("A");
+            System.out.println("Xuat xac");
+        }else if(gpa > 8 && gpa < 9) {
+            System.out.println("B+");
+            System.out.println("Gioi");
+        }else if(gpa > 7 && gpa < 8) {
+            System.out.println("B");
+            System.out.println("Kha");
+        }else if(gpa > 6 && gpa <7) {
+            System.out.println("C+");
+            System.out.println("Trung binh kha");
+        }else if(gpa > 5 && gpa < 6) {
+            System.out.println("C");
+            System.out.println("Trung binh");
+        }else if(gpa > 4 && gpa < 5) {
+            System.out.println("D");
+            System.out.println("Yeu");
+        }else {
+            System.out.println("F");
+            System.out.println("Kem");
+        }
+    }
+
     void outputInfo(SinhVien sv) {
         System.out.println("Id : " + sv.getId());
         System.out.println("Ten : " + sv.getName());
         System.out.println("Diem tong ket : " + scoreCaculate(sv));
+        ratingScore(sv);
     }
 }

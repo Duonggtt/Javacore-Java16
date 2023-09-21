@@ -109,7 +109,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<UserDto> getUserById(int id) {
-        Optional<User> user = userRepository.findById(id);
+        Optional<User> user =userRepository.findById(id);
         return user.stream().map(this::mapToDto)
                 .findFirst();
     }
