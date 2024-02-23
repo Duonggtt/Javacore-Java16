@@ -12,9 +12,6 @@ import java.util.Scanner;
 
 public class MainRun {
 
-    private static ArrayList<Songs> songs = new ArrayList<>();
-    private static ArrayList<Idols> idols = new ArrayList<>();
-    private static ArrayList<Followers> followers = new ArrayList<>();
     private static TikTok tikTok = new TikTok();
 
 
